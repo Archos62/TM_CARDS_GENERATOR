@@ -219,7 +219,8 @@ var megaTemplates = {
       {type:"text",data:"ID",x:413,y:612,width:826,height:29,color:"#24770d",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:715,y:668,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"Card description",x:110,y:770,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1005,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+	  {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:400,color:"#000000"},
+	  {type:"text",data:"Flavor text!",x:413,y:1005,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   green_big_bottom: {
