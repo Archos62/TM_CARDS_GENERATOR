@@ -22,7 +22,7 @@ var blockList = [
   {putUnder: "templates", text: "Blue Card", src:"blue_normal"},
   {putUnder: "templates", text: "Blue Big Bottom", src:"blue_big_bottom"},
   {putUnder: "templates", text: "Blue Big Top", src:"blue_big_top"},
-  {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top"},  
+  {putUnder: "templates", text: "Blue Very Big Top", src:"xxx_blue_very_big_top"},  
   {putUnder: "templates", text: "Red Card", src:"red_normal"},
   {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom"},
   {putUnder: "globalparameters", text: "", src:"oxygen"},
