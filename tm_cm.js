@@ -22,7 +22,7 @@ var blockList = [
   {putUnder: "templates", text: "Blue Card", src:"blue_normal"},
   {putUnder: "templates", text: "Blue Big Bottom", src:"blue_big_bottom"},
   {putUnder: "templates", text: "Blue Big Top", src:"blue_big_top"},
-  {putUnder: "templates", text: "Blue Very Big Top", src:"xxx_blue_very_big_top"},  
+  {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top"},  
   {putUnder: "templates", text: "Red Card", src:"red_normal"},
   {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom"},
   {putUnder: "globalparameters", text: "", src:"oxygen"},
@@ -299,7 +299,7 @@ var megaTemplates = {
     blue_very_big_top: {
     layers: [
       {type: "base", color: "#ffffff", height: 1126, width: 826, params: "color"},
-      {type:"block", iNum:5,x:0,y:0,width:826,height:1126,params:"allimages"},
+      {type:"block", iNum:6,x:0,y:0,width:826,height:1126,params:"allimages"},
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:37,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
       {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
@@ -315,9 +315,9 @@ var megaTemplates = {
   red_normal: {
     layers: [
       {type: "base", color: "#ffffff", height: 1126, width: 826, params: "color"},
-      {type:"block", iNum:6,x:0,y:0,width:826,height:1126,params:"allimages"},
+      {type:"block", iNum:7,x:0,y:0,width:826,height:1126,params:"allimages"},
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
-      {type:"block", iNum:37,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
+      {type:"block", iNum:38,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
       {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"ID",x:413,y:685,width:826,height:29,color:"#c36a17",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:715,y:713,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
@@ -328,9 +328,9 @@ var megaTemplates = {
   red_small_bottom: {
     layers: [
       {type: "base", color: "#ffffff", height: 1126, width: 826, params: "color"},
-      {type:"block", iNum:7,x:0,y:0,width:826,height:1126,params:"allimages"},
+      {type:"block", iNum:8,x:0,y:0,width:826,height:1126,params:"allimages"},
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
-      {type:"block", iNum:37,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
+      {type:"block", iNum:38,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
       {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"ID",x:413,y:718,width:826,height:29,color:"#c36a17",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:715,y:746,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
@@ -341,7 +341,7 @@ var megaTemplates = {
   prelude: {
     layers: [
       {type: "base", color: "#ffffff", height: 826, width: 1126, params: "color"},
-      {type:"block", iNum:94,x:0,y:0,width:1126,height:826,params:"allimages"},
+      {type:"block", iNum:95,x:0,y:0,width:1126,height:826,params:"allimages"},
       {type:"text",data:"CARD NAME",x:563,y:218,width:826,height:48,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"ID",x:563,y:500,width:826,height:29,color:"#ce809f",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:1002,y:520,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
@@ -353,10 +353,10 @@ var megaTemplates = {
   corporation: {
     layers: [
       {type:"base", color: "#ffffff", height: 826, width: 1126, params: "color"},
-      {type:"block","iNum":96,x:969,y:103,width:257,height:89,params:"allimages"},
-      {type:"block","iNum":95,x:0,y:0,width:1126,height:826,params:"allimages"},
+      {type:"block","iNum":97,x:969,y:103,width:257,height:89,params:"allimages"},
+      {type:"block","iNum":96,x:0,y:0,width:1126,height:826,params:"allimages"},
       {type:"effect", x: 600, y: 300, width: 400, height: 300, params: "allimages allpreset"},
-      {type:"block", name: "", iNum: 97, x: 631, y: 307, width: 345.79, height: 36,params:"allimages"},
+      {type:"block", name: "", iNum: 98, x: 631, y: 307, width: 345.79, height: 36,params:"allimages"},
       {type:"text", data: "E F F E C T", x: 800, y: 333, width: 1126, height: 22, color: "#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text","data":"ID",x:198,y:736,width:826,height:29,color:"#c3c3c3",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text","data":"C O R P O R A T I O N",x:563,y:109,width:826,height:24,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
