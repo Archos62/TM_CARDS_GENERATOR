@@ -132,6 +132,9 @@ var blockDefaults = {
     {label:"Second Tag", x:524, y:67, width:110, height:110},
     {label:"Third Tag", x:410, y:67, width:110, height:110},
     {label:"Small Tag", x:330, y:536, width:82, height:82},
+    {label:"First Tag (Requirement)", x:195, y:95, width:55, height:55},
+    {label:"Second Tag (Requirement)", x:252, y:95, width:55, height:55},
+    {label:"Third Tag (Requirement)", x:309, y:95, width:55, height:55},
     {label:"First (Prel)", x:937, y:67, width:110, height:110},
     {label:"Second (Prel)", x:822, y:67, width:110, height:110},
     {label:"Third (Prel)", x:708, y:67, width:110, height:110},
@@ -145,9 +148,11 @@ var blockDefaults = {
   text: [
     {label:"Card Cost", x:118, y:147, height:66, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"Card Name", x:413, y:214, height:46, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
-    {label:"Description", x:413, y:643, height:22, lineSpace:4, color:"#000000", font:"Pagella", style:"normal", weight:"normal", justify:"center"},
-    {label:"Flavor Text", x:413, y:1005, height:22, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
-    {label:"FAN MADE", x:413, y:611, height:24, color:"#24770d", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+    {label:"Description", x:413, y:643, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"normal", weight:"normal", justify:"center"},
+    {label:"Flavor Text", x:413, y:1005, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
+    {label:"ID", x:413, y:611, height:29, color:"#24770d", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+    {label:"X-ID", x:420, y:700, height:21, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+    {label:"M€", x:420, y:700, height:45, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"PRELUDE", data:"P R E L U D E", x:563, y:99, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"CORPORATION", data:"C O R P O R A T I O N", x:563, y:109, height:24, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"EFFECT", data:"E F F E C T", x:800, y:333, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"}
@@ -211,9 +216,10 @@ var megaTemplates = {
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block",iNum:37,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
       {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
-      {type:"text",data:"FAN MADE",x:413,y:612,width:826,height:24,color:"#24770d",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Card description\nMultiple lines\nand they can be much, much, much longer\n'V space' controls the spacing between lines",x:110,y:770,width:826,height:22,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1005,width:826,height:22,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"text",data:"ID",x:413,y:612,width:826,height:29,color:"#24770d",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
+      {type:"text",data:"X-ID",x:715,y:668,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
+      {type:"text",data:"Card description",x:110,y:770,width:826,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
+      {type:"text",data:"Flavor text!",x:413,y:1005,width:826,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   green_big_bottom: {
@@ -2155,4 +2161,3 @@ var elem = document.getElementById('cmcanvas'),
 elem.addEventListener("mousedown", dragStart, false);
 elem.addEventListener("mouseup", dragEnd, false);
 elem.addEventListener("mousemove", drag, false);
-
