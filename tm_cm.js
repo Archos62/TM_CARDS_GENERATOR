@@ -126,7 +126,7 @@ var blockList = [
   {putUnder: "misc", text: "Colony Tile", src:"colonytile"},
   {putUnder: "misc", text: "", src:"population"},
   {putUnder: "extensions", text: "Promo", src:"ext_promo"},
-  {putUnder: "extensions", text: "Colonie", src:"ext_colonie"},	
+  //{putUnder: "extensions", text: "Colonie", src:"ext_colonie"},	
   {putUnder: "extensions", text: "Venus", src:"ext_venus"},
   {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
