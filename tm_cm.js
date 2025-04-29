@@ -217,7 +217,8 @@ var blockDefaults = {
 	  {label:"First extension", x:100, y:500},
 	  {label:"Second extension", x:100, y:600},
 	  {label:"Third extension", x:100, y:700},
-	  {label:"Fourth extension", x:100, y:800},
+	  {label:"Fourth extension", x:100, y:800}
+],
 };
 
 var megaTemplates = {
