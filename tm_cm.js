@@ -124,7 +124,13 @@ var blockList = [
   {putUnder: "resources", text: "", src:"ore", otherbg:"res_otherbg"},
   {putUnder: "misc", text: "", src:"asset"},
   {putUnder: "misc", text: "Colony Tile", src:"colonytile"},
-  {putUnder: "misc", text: "", src:"population"}
+  {putUnder: "misc", text: "", src:"population"},
+  {putUnder: "extensions", text: "Promo", src:"ext_promo"},
+  {putUnder: "extensions", text: "Colonie", src:"ext_colonie"},	
+  {putUnder: "extensions", text: "Venus", src:"ext_venus"},
+  {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
+  {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
+  {putUnder: "extensions", text: "ETSY", src:"ext_etsy"}
 ];
 
 var blockDefaults = {
@@ -206,7 +212,12 @@ var blockDefaults = {
     {label:"2x width", width:235},
     {label:"2.5x width", width:279},
     {label:"3x width", width:325}
-  ]
+  ],
+  extensions: [
+	  {label:"First extension", x:100, y:500},
+	  {label:"Second extension", x:100, y:600},
+	  {label:"Third extension", x:100, y:700},
+	  {label:"Fourth extension", x:100, y:800},
 };
 
 var megaTemplates = {
