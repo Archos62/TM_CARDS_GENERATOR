@@ -35,6 +35,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       </div>
     </div>
   </div>
+  
+  <!-- Zone d'import JSON manuelle -->
+<div class="w3-container w3-padding" style="margin-left:250px;">
+  <h3>Importer un projet via JSON</h3>
+  <textarea id="manualjson" rows="10" style="width:100%;"></textarea>
+  <button onclick="loadProjectFromText()">Importer depuis texte</button>
+</div>
+  
+  
+  
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-large w3-text-grey" style="font-weight:bold">
@@ -233,6 +243,51 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <script src="imageFit.js"></script>
 
 <script src="tm_cm.js"></script>
+
+<!-- Test du script d'importation-->
+<script>
+
+function loadProjectFromText() {
+  
+  resetProject(false);
+  
+  try {
+    const txt = document.getElementById('manualjson').value;
+    const parsed = JSON.parse(txt);
+    if (!parsed.pos || !parsed.layers) throw new Error("Le JSON doit contenir les champs 'pos' et 'layers'.");
+
+    projectPos = parsed.pos;
+    const newLayers = parsed.layers;
+
+    let aCanvases = [];
+    for (let i = 0; i < projectPos.length; i++) {
+      let cvs = document.createElement("canvas");
+      cvs.id = "canvas" + i;
+      cvs.width = projectPos[i].width;
+      cvs.height = projectPos[i].height;
+      let ctx = cvs.getContext("2d");
+      ctx.fillStyle = "#cccccc";
+      ctx.fillRect(0, 0, cvs.width, cvs.height);
+      aCanvases.push(cvs);
+    }
+
+    for (let i = 0; i < newLayers.length; i++) {
+      if ((newLayers[i].type === "userFile") || (newLayers[i].type === "embedded")) {
+        newLayers[i].iNum = userImageList.length;
+        userImageList.push(aCanvases.shift());
+        newLayers[i].type = "embedded";
+      }
+    }
+
+    projectJSON = newLayers;
+    loadFrom(newLayers);
+    drawProject();
+    alert("Projet chargé depuis pos+layers.");
+  } catch (e) {
+    alert("Erreur de chargement du projet : " + e.message);
+  }
+}
+</script>
 
 </body>
 </html>
