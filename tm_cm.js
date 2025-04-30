@@ -126,7 +126,7 @@ var blockList = [
   {putUnder: "misc", text: "Colony Tile", src:"colonytile"},
   {putUnder: "misc", text: "", src:"population"},
   {putUnder: "extensions", text: "Promo", src:"ext_promo"},
-  //{putUnder: "extensions", text: "Colonie", src:"ext_colonie"},	
+  {putUnder: "extensions", text: "Colonie", src:"ext_colonie"},	
   {putUnder: "extensions", text: "Venus", src:"ext_venus"},
   {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
@@ -214,10 +214,14 @@ var blockDefaults = {
     {label:"3x width", width:325}
   ],
   extensions: [
-	  {label:"First extension", x:100, y:500},
-	  {label:"Second extension", x:100, y:600},
-	  {label:"Third extension", x:100, y:700},
-	  {label:"Fourth extension", x:100, y:800}
+	  {label:"1st (Vertical)", x:61, y:850, width:25, height:25},
+	  {label:"2nd (Vertical)", x:61, y:890, width:25, height:25},
+	  {label:"3rd (Vertical)", x:61, y:930, width:25, height:25},
+	  {label:"4th (Vertical)", x:61, y:970, width:25, height:25},
+	  {label:"1st (Horizontal)", x:71, y:530, width:25, height:25},
+	  {label:"2nd (Horizontal)", x:71, y:570, width:25, height:25},
+	  {label:"3rd (Horizontal)", x:71, y:610, width:25, height:25},
+	  {label:"4th (Horizontal)", x:71, y:650, width:25, height:25}
 ],
 };
 
