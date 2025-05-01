@@ -36,11 +36,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
   
-<div id="jsonDropZone" style="padding:20px; border:2px dashed #999; text-align:center; margin-bottom:10px;">
-  Glissez ici un fichier JSON de carte
+<!-- bouton d'import JSON -->  
+<div style="margin-bottom:10px">
+  <input type="file" id="jsonLoader" accept=".json">
 </div>
-
-  
+ 
   <!-- Zone d'import JSON manuelle -->
 <div class="w3-container w3-padding" style="margin-left:250px;">
   <h3>Importer un projet via JSON</h3>
@@ -250,6 +250,31 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <script src="tm_cm.js"></script>
 
 <!-- Test du script d'importation-->
+
+<script>
+document.getElementById("jsonLoader").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        try {
+            const data = JSON.parse(event.target.result);
+            if (data.layers && data.pos) {
+                loadFrom(data.layers);
+                drawProject();
+            } else {
+                alert("Ce fichier ne contient pas de structure JSON valide.");
+            }
+        } catch (err) {
+            alert("Erreur de parsing du JSON : " + err.message);
+        }
+    };
+    reader.readAsText(file);
+});
+</script>
+
+
 <script>
 
 <script>
@@ -276,50 +301,8 @@ dropZone.addEventListener("drop", function (e) {
     };
     reader.readAsText(file);
 });
-</script>
 
 
-function loadProjectFromText() {
-  
-  resetProject(false);
-  
-  try {
-    const txt = document.getElementById('manualjson').value;
-    const parsed = JSON.parse(txt);
-    if (!parsed.pos || !parsed.layers) throw new Error("Le JSON doit contenir les champs 'pos' et 'layers'.");
-
-    projectPos = parsed.pos;
-    const newLayers = parsed.layers;
-
-    let aCanvases = [];
-    for (let i = 0; i < projectPos.length; i++) {
-      let cvs = document.createElement("canvas");
-      cvs.id = "canvas" + i;
-      cvs.width = projectPos[i].width;
-      cvs.height = projectPos[i].height;
-      let ctx = cvs.getContext("2d");
-      ctx.fillStyle = "#cccccc";
-      ctx.fillRect(0, 0, cvs.width, cvs.height);
-      aCanvases.push(cvs);
-    }
-
-    for (let i = 0; i < newLayers.length; i++) {
-      if ((newLayers[i].type === "userFile") || (newLayers[i].type === "embedded")) {
-        newLayers[i].iNum = userImageList.length;
-        userImageList.push(aCanvases.shift());
-        newLayers[i].type = "embedded";
-      }
-    }
-
-    projectJSON = newLayers;
-    loadFrom(newLayers);
-    drawProject();
-    alert("Projet chargé depuis pos+layers.");
-  } catch (e) {
-    alert("Erreur de chargement du projet : " + e.message);
-  }
-}
-</script>
 
 </body>
 </html>
