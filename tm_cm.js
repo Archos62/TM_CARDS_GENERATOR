@@ -1738,9 +1738,25 @@ function clickSaveProject() {
 
 function saveProjectCont(need2wait) {
   let c = document.getElementById("cmcanvas");
+  
+  //nom automatique
+  
+  // Cherche l'ID alphanumérique dans les calques
+  let x_id_layer = aLayers.find(l =>
+    l.type === "text" &&
+    l.data &&
+    l.data.match(/^([A-Z]\d{2}|\d{3})$/)
+  );
+  let id = x_id_layer ? x_id_layer.data : "card";
+
+  // Génère le nom de fichier
+  let filename = id + ".png";
+
+
 
   let projectlink = document.getElementById('projectlink');
-  projectlink.setAttribute('download', 'cardMaker.png');
+  //projectlink.setAttribute('download', 'cardMaker.png');
+  projectlink.setAttribute('download', filename);
   projectlink.setAttribute('href', c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
   projectlink.click();
   if (need2wait) saveDone();
