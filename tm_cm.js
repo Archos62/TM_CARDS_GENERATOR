@@ -1742,12 +1742,11 @@ function saveProjectCont(need2wait) {
   //nom automatique
   
   // Cherche l'ID alphanumérique dans les calques
-  let x_id_layer = aLayers.find(l =>
+ let id = (Array.isArray(aLayers) && aLayers.find(l =>
     l.type === "text" &&
     l.data &&
     l.data.match(/^([A-Z]\d{2}|\d{3})$/)
-  );
-  let id = x_id_layer ? x_id_layer.data : "card";
+  ))?.data || "card";
 
   // Génère le nom de fichier
   let filename = id + ".png";
