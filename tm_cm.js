@@ -157,7 +157,8 @@ var blockDefaults = {
     {label:"Card Name (Vertical)", x:413, y:214, height:46, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"Card Name (Horizontal)", x:563, y:218, height:48, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},	
     {label:"Description", x:413, y:643, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"normal", weight:"normal", justify:"center"},
-    {label:"Flavor Text", x:413, y:1005, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
+    {label:"Flavor Text (Vertical)", x:413, y:1005, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
+	{label:"Flavor Text (Horizontal)", x:563, y:725, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
     {label:"ID", x:413, y:611, height:29, color:"#24770d", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"X-ID", x:420, y:700, height:21, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"M€", x:420, y:700, height:45, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
@@ -168,7 +169,7 @@ var blockDefaults = {
 	{label:"Line (Horizontal)",x:283, y:700, length:600}
   ],
   resources: [
-    {label:"Standard", x:413, y:643, width:92, height:92},
+    {label:"Standard", width:92, height:92},
     //{label:"Card", x:413, y:643, width:88, height:122},
 	{label:"Card", width:88, height:122},
     //{label:"TR", x:413, y:643, width:151, height:112}
@@ -195,19 +196,19 @@ var blockDefaults = {
   ],
   misc: [
     {label:"MC", width:92, height:92},
-    {label:"Arrow", x:413, y:429, width:116, height:55},
-    {label:"Asterisk", x:413, y:643, width:55, height:55},
-    {label:"Slash", x:413, y:643, width:55, height:146},
-    {label:"Colon", x:413, y:643, width:11, height:55},
-    {label:"Delegate", x:413, y:643, width:77, height:99},
+    {label:"Arrow", width:116, height:55},
+    {label:"Asterisk", width:55, height:55},
+    {label:"Slash", width:55, height:146},
+    {label:"Colon", width:11, height:55},
+    {label:"Delegate", width:77, height:99},
     {label:"Effect (bg)", x:631, y:307, width:346, height:36},
-    {label:"Influence", x:413, y:643, width:117, height:122},
+    {label:"Influence", width:117, height:122},
     {label:"Tag Holder 0", x:969, y:103, width:257, height:89},
     {label:"Tag Holder 1", x:898, y:103, width:257, height:89},
     {label:"Tag Holder 2", x:794, y:103, width:257, height:89}
   ],
   parties: [
-    {label:"Party", x:413, y:643, width:169, height:122}
+    {label:"Party", width:169, height:122}
   ],
   production: [
     {label:"1x height", height:143},
