@@ -166,7 +166,7 @@ var blockDefaults = {
     {label:"CORPORATION", data:"C O R P O R A T I O N", x:563, y:109, height:24, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"EFFECT", data:"E F F E C T", x:800, y:333, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
 	//{label:"Line (Vertical)", ,length:400},
-	{label:"Line (Horizontal)",x:283, y:700, length:600}
+	{label:"Line (Horizontal)",x:283, y:700, len:600}
   ],
   resources: [
     {label:"Standard", width:92, height:92},
@@ -230,8 +230,8 @@ var blockDefaults = {
 	  {label:"4th (Horizontal)", x:71, y:650, width:25, height:25}
 ],
 	line: [
-	{label:"Flavor line (Horizontal)", x:263, y: 695, width:2, angle: 0, len: 600}
-	]
+	{label:"Flavor line (Horizontal)", x:263, y: 695, len: 600}
+],
 	//{\"type\":\"line\",\"x\":263,\"y\":695,\"width\":2,\"angle\":0,\"len\":600,\"color\":\"#000000\",\"opacity\":1,\"params\":\"allangle alllen allpreset allcolor\"}]"
 
 };
