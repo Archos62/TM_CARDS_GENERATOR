@@ -154,7 +154,8 @@ var blockDefaults = {
   ],
   text: [
     {label:"Card Cost", x:118, y:147, height:66, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
-    {label:"Card Name", x:413, y:214, height:46, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+    {label:"Card Name (Vertical)", x:413, y:214, height:46, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+    {label:"Card Name (Horizontal)", x:563, y:218, height:48, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},	
     {label:"Description", x:413, y:643, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"normal", weight:"normal", justify:"center"},
     {label:"Flavor Text", x:413, y:1005, height:29, lineSpace:4, color:"#000000", font:"Pagella", style:"italic", weight:"bold", justify:"center"},
     {label:"ID", x:413, y:611, height:29, color:"#24770d", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
