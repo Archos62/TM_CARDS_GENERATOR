@@ -187,12 +187,12 @@ var blockDefaults = {
     {label:"No Req", x:180, y:92, width:21, height:60}
   ],
   globalparameters: [
-    {label:"Oxygen", x:413, y:643, width:118, height:118},
-    {label:"Temp", x:413, y:643, width:35, height:118},
-    {label:"Venus", x:413, y:643, width:125, height:71}
+    {label:"Oxygen", width:118, height:118},
+    {label:"Temp", width:35, height:118},
+    {label:"Venus", width:125, height:71}
   ],
   misc: [
-    {label:"MC", x:413, y:643, width:92, height:92},
+    {label:"MC", width:92, height:92},
     {label:"Arrow", x:413, y:429, width:116, height:55},
     {label:"Asterisk", x:413, y:643, width:55, height:55},
     {label:"Slash", x:413, y:643, width:55, height:146},
