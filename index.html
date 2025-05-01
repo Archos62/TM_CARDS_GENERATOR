@@ -36,6 +36,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
   
+<div id="jsonDropZone" style="padding:20px; border:2px dashed #999; text-align:center; margin-bottom:10px;">
+  Glissez ici un fichier JSON de carte
+</div>
+
+  
   <!-- Zone d'import JSON manuelle -->
 <div class="w3-container w3-padding" style="margin-left:250px;">
   <h3>Importer un projet via JSON</h3>
@@ -246,6 +251,33 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <!-- Test du script d'importation-->
 <script>
+
+<script>
+const dropZone = document.getElementById("jsonDropZone");
+dropZone.addEventListener("dragover", e => e.preventDefault());
+dropZone.addEventListener("drop", function (e) {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.name.endsWith(".json")) return;
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        try {
+            const data = JSON.parse(event.target.result);
+            if (data.layers && data.pos) {
+                loadFrom(data.layers);
+                drawProject();
+            } else {
+                alert("Ce fichier ne contient pas de structure JSON valide.");
+            }
+        } catch (err) {
+            alert("Erreur de parsing du JSON : " + err.message);
+        }
+    };
+    reader.readAsText(file);
+});
+</script>
+
 
 function loadProjectFromText() {
   
