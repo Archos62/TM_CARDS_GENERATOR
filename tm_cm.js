@@ -16,19 +16,19 @@ var dragOffsetY;
 var keyFocusLayer;
 
 var blockList = [
-  {putUnder: "templates", text: "Green Card", src:"green_normal"},
-  {putUnder: "templates", text: "Green Small Bottom", src:"green_small_bottom"},
-  {putUnder: "templates", text: "Green Big Bottom", src:"green_big_bottom"},
+  {putUnder: "templates", text: "Green Card", src:"green_normal"}, //0
+  {putUnder: "templates", text: "Green Small Bottom", src:"green_small_bottom"}, //1
+  {putUnder: "templates", text: "Green Big Bottom", src:"green_big_bottom"}, //2
   {putUnder: "templates", text: "Blue Card", src:"blue_normal"},
   {putUnder: "templates", text: "Blue Big Bottom", src:"blue_big_bottom"},
   {putUnder: "templates", text: "Blue Big Top", src:"blue_big_top"},
   {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top"},  
   {putUnder: "templates", text: "Red Card", src:"red_normal"},
   {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom"},
-  {putUnder: "globalparameters", text: "", src:"oxygen"},
-  {putUnder: "globalparameters", text: "", src:"temperature"},
-  {putUnder: "globalparameters", text: "", src:"venus"},
-  {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg"},
+  {putUnder: "globalparameters", text: "", src:"oxygen"}, //9
+  {putUnder: "globalparameters", text: "", src:"temperature"}, //10
+  {putUnder: "globalparameters", text: "", src:"venus"},  //11
+  {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg"}, //12
   {putUnder: "misc", text: "mc_otherbg", src:"other_player_background", hidden:true},
   {putUnder: "misc", text: "", src:"arrow"},
   {putUnder: "misc", text: "Asterisk", src:"asterisc"},
@@ -163,7 +163,9 @@ var blockDefaults = {
     {label:"M€", x:420, y:700, height:45, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"PRELUDE", data:"P R E L U D E", x:563, y:99, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"CORPORATION", data:"C O R P O R A T I O N", x:563, y:109, height:24, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
-    {label:"EFFECT", data:"E F F E C T", x:800, y:333, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"}
+    {label:"EFFECT", data:"E F F E C T", x:800, y:333, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
+	//{label:"Line (Vertical)", ,length:400},
+	{label:"Line (Horizontal)",x:283, y:700, length:600}
   ],
   resources: [
     {label:"Standard", x:413, y:643, width:92, height:92},
