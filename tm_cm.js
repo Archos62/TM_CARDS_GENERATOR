@@ -167,8 +167,10 @@ var blockDefaults = {
   ],
   resources: [
     {label:"Standard", x:413, y:643, width:92, height:92},
-    {label:"Card", x:413, y:643, width:88, height:122},
-    {label:"TR", x:413, y:643, width:151, height:112}
+    //{label:"Card", x:413, y:643, width:88, height:122},
+	{label:"Card", width:88, height:122},
+    //{label:"TR", x:413, y:643, width:151, height:112}
+	{label:"TR", width:151, height:112}
   ],
   VPs: [
     {label:"Standard", x:542, y:836, width:223, height:223},
