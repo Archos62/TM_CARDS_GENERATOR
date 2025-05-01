@@ -229,6 +229,11 @@ var blockDefaults = {
 	  {label:"3rd (Horizontal)", x:71, y:610, width:25, height:25},
 	  {label:"4th (Horizontal)", x:71, y:650, width:25, height:25}
 ],
+	line: [
+	{label:"Flavor line (Horizontal)", x:263, y: 695, width:2, angle: 0, len: 600}
+	]
+	//{\"type\":\"line\",\"x\":263,\"y\":695,\"width\":2,\"angle\":0,\"len\":600,\"color\":\"#000000\",\"opacity\":1,\"params\":\"allangle alllen allpreset allcolor\"}]"
+
 };
 
 var megaTemplates = {
