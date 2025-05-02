@@ -93,7 +93,6 @@ var blockList = [
   {putUnder: "tags", text: "", src:"venus", otherbg:"tag_otherbg"},
   {putUnder: "tags", text: "", src:"wild", otherbg:"tag_otherbg"},
   {putUnder: "tiles", text: "", src:"city", otherbg:"tiles_otherbg"},
-  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
   {putUnder: "tiles", text: "", src:"colony", otherbg:"trade_otherbg"},
   {putUnder: "tiles", text: "", src:"empty", otherbg:"tiles_otherbg"},
   {putUnder: "tiles", text: "", src:"greenery_no_O2", otherbg:"tiles_otherbg"},
@@ -132,6 +131,7 @@ var blockList = [
   {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
   {putUnder: "extensions", text: "ETSY", src:"ext_etsy"}
+  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
 ];
 
 var blockDefaults = {
