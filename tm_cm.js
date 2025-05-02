@@ -130,8 +130,8 @@ var blockList = [
   {putUnder: "extensions", text: "Venus", src:"ext_venus"},
   {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
-  {putUnder: "extensions", text: "ETSY", src:"ext_etsy"}
-  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
+  {putUnder: "extensions", text: "ETSY", src:"ext_etsy"},
+  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true}
 ];
 
 var blockDefaults = {
