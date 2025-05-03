@@ -131,7 +131,10 @@ var blockList = [
   {putUnder: "extensions", text: "Turmoil", src:"ext_turmoil"},
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
   {putUnder: "extensions", text: "ETSY", src:"ext_etsy"},
-  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true}
+  {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
+  {putUnder: "resources", text: "Prelude", src:"card_prelude", otherbg:"res_otherbg"},
+  {putUnder: "resources", text: "Corpo", src:"card_corpo", otherbg:"res_otherbg"},
+  {putUnder: "tiles", text: "", src:"colony_plate"}
 ];
 
 var blockDefaults = {
@@ -171,9 +174,8 @@ var blockDefaults = {
   ],
   resources: [
     {label:"Standard", width:92, height:92},
-    //{label:"Card", x:413, y:643, width:88, height:122},
-	{label:"Card", width:88, height:122},
-    //{label:"TR", x:413, y:643, width:151, height:112}
+	{label:"Card (Vertical)", width:88, height:122},
+	{label:"Card (Horizontal)", width:122, height:88},	
 	{label:"TR", width:151, height:112}
   ],
   VPs: [
@@ -181,7 +183,9 @@ var blockDefaults = {
     {label:"Negative", x:652, y:836, width:223, height:223}
   ],
   tiles: [
-    {label:"Standard tile", height:142}
+    {label:"Standard tile", height:142},
+	{label:"In description", height:92},
+	{label:"Colony tile", width:122, height:88}	
   ],
   requisites: [
     {label:"Max", x:180, y:92, width:200, height:60},
