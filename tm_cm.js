@@ -134,7 +134,8 @@ var blockList = [
   {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
   {putUnder: "resources", text: "Prelude", src:"card_prelude", otherbg:"res_otherbg"},
   {putUnder: "resources", text: "Corpo", src:"card_corpo", otherbg:"res_otherbg"},
-  {putUnder: "tiles", text: "", src:"colony_plate"}
+  {putUnder: "tiles", text: "", src:"colony_plate"},
+  {putUnder: "tiles", text: "Standard project", src:"Standard_tile"}
 ];
 
 var blockDefaults = {
@@ -186,7 +187,8 @@ var blockDefaults = {
   tiles: [
     {label:"Standard tile", height:142},
 	{label:"In description", height:92},
-	{label:"Colony tile", width:122, height:88}	
+	{label:"Colony tile", width:122, height:88},
+	{label:"Standard project", width:122, height:88}
   ],
   requisites: [
     {label:"Max", x:180, y:92, width:200, height:60},
