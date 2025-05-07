@@ -167,6 +167,7 @@ var blockDefaults = {
     {label:"ID (Green)", x:413, y:611, height:29, color:"#24770d", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"ID (Blue)", x:413,y:798,width:826,height:29,color:"#0c5e84",font:"Prototype",style:"normal",weight:"normal", justify:"center"},
     {label:"ID (Red)", x:413,y:685,width:826,height:29,color:"#c36a17",font:"Prototype",style:"normal",weight:"normal", justify:"center"},
+	{label:"ID (Pink)",x:563,y:500,width:826,height:29,color:"#ce809f",font:"Prototype",style:"normal",weight:"normal",justify:"center"},
 	{label:"X-ID", x:715, y:668, height:21, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"M€", x:420, y:700, height:45, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
     {label:"PRELUDE", data:"P R E L U D E", x:563, y:99, height:22, color:"#000000", font:"Prototype", style:"normal", weight:"normal", justify:"center"},
