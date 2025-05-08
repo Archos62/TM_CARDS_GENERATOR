@@ -2513,39 +2513,3 @@ function openReplacementMenu(oldLayer, layerId, container) {
 
   container.appendChild(btnConfirm);
 }
-
-//Fermeture du echap
-function handleEscapeClose(e) {
-  if (e.key === "Escape") {
-    removePresetDropdown();
-  }
-}
-
-function handleGlobalShortcuts(e) {
-  const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-  const ctrlOrCmd = isMac ? e.metaKey : e.ctrlKey;
-
-  // Ctrl + D (dupliquer calque sélectionné)
-  if (ctrlOrCmd && e.key.toLowerCase() === "d") {
-    e.preventDefault(); // empêche le favori du navigateur
-
-    const selected = [...document.getElementsByClassName("divRec")]
-      .find(div => div.classList.contains("selected"));
-
-    if (!selected) return;
-
-    const id = selected.id;
-    const layer = aLayers[id];
-    if (!layer) return;
-
-    const newLayer = structuredClone(layer);
-    newLayer.x += 0;
-    newLayer.y += 20;
-
-    const newDiv = addLayer("Clone", newLayer);
-    drawProject();
-  }
-}
-
-document.addEventListener("keydown", handleGlobalShortcuts);
-document.addEventListener("keydown", handleEscapeClose);
