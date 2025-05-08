@@ -2396,6 +2396,13 @@ function removePresetDropdown() {
 }
 
 function openReplacementMenu(oldLayer, layerId, container) {
+  
+  // Exclusion des types non remplaçables
+if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].includes(oldLayer.type)) {
+  container.innerHTML = "<div style='color:#900;'>Ce type d’élément ne peut pas être remplacé.</div>";
+  return;
+}
+  
   // Supprime les éléments enfants existants (dropdown + boutons)
   container.innerHTML = "";
 
