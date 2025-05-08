@@ -2240,7 +2240,7 @@ elem.addEventListener("mousedown", dragStart, false);
 elem.addEventListener("mouseup", dragEnd, false);
 elem.addEventListener("mousemove", drag, false);
 
-//Add right click capability
+// Active le menu contextuel personnalisé sur clic droit
 elem.addEventListener("contextmenu", onCanvasRightClick, false);
 
 function onCanvasRightClick(event) {
@@ -2252,10 +2252,7 @@ function onCanvasRightClick(event) {
   for (let i = layerDivs.length - 1; i >= 0; i--) {
     const layer = aLayers[layerDivs[i].id];
     if (clickIsWithinLayer(layer, mouse.x, mouse.y)) {
-      // Sélectionne le calque dans l’UI
       selectLayer.call(layerDivs[i].children[0]);
-
-      // Affiche le menu contextuel enrichi
       showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
       return;
     }
@@ -2265,12 +2262,22 @@ function onCanvasRightClick(event) {
 function showPresetDropdown(layer, x, y, layerId) {
   removePresetDropdown();
 
-  const dropdown = document.createElement("select");
+  // 🔧 Crée le conteneur principal
+  const container = document.createElement("div");
   container.id = "contextMenuContainer";
-  dropdown.style.position = "fixed";
-  dropdown.style.left = `${x}px`;
-  dropdown.style.top = `${y}px`;
-  dropdown.style.zIndex = 1000;
+  container.style.position = "fixed";
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
+  container.style.zIndex = 1000;
+  container.style.background = "#fff";
+  container.style.border = "1px solid #888";
+  container.style.padding = "8px";
+  container.style.boxShadow = "2px 2px 6px rgba(0,0,0,0.3)";
+  container.style.fontSize = "14px";
+
+  // 🔽 Dropdown des presets
+  const dropdown = document.createElement("select");
+  dropdown.style.width = "100%";
   dropdown.style.fontSize = "16px";
 
   let dName = "";
@@ -2318,19 +2325,6 @@ function showPresetDropdown(layer, x, y, layerId) {
     }
   });
 
-  // Ajoute le menu dans un conteneur flottant
-  const container = document.createElement("div");
-  container.id = "dynamicPresetDropdown";
-  container.style.position = "fixed";
-  container.style.left = `${x}px`;
-  container.style.top = `${y}px`;
-  container.style.zIndex = 1000;
-  container.style.background = "#fff";
-  container.style.border = "1px solid #888";
-  container.style.padding = "8px";
-  container.style.boxShadow = "2px 2px 6px rgba(0,0,0,0.3)";
-  container.style.fontSize = "14px";
-
   container.appendChild(dropdown);
 
   // 🔁 Bouton "Dupliquer"
@@ -2362,29 +2356,19 @@ function showPresetDropdown(layer, x, y, layerId) {
     removePresetDropdown();
   };
   container.appendChild(btnDelete);
-  
-  // 🔄 Bouton "Remplacer"
-	const btnReplace = document.createElement("button");
-	btnReplace.textContent = "Remplacer";
-	btnReplace.style.display = "block";
-	btnReplace.style.marginTop = "4px";
-	btnReplace.onclick = () => {
-	  openReplacementMenu(aLayers[layerId], layerId, container);
-	};
-	container.appendChild(btnReplace);
 
+  // 🔄 Bouton "Remplacer"
+  const btnReplace = document.createElement("button");
+  btnReplace.textContent = "Remplacer";
+  btnReplace.style.display = "block";
+  btnReplace.style.marginTop = "4px";
+  btnReplace.onclick = () => {
+    openReplacementMenu(aLayers[layerId], layerId, container);
+  };
+  container.appendChild(btnReplace);
 
   document.body.appendChild(container);
   document.addEventListener("click", clickOutsidePresetDropdown);
-
-}
-
-function clickOutsidePresetDropdown(e) {
-  const container = document.getElementById("contextMenuContainer");
-  if (container && !container.contains(e.target)) {
-    removePresetDropdown();
-    document.removeEventListener("click", clickOutsidePresetDropdown);
-  }
 }
 
 function removePresetDropdown() {
@@ -2395,15 +2379,20 @@ function removePresetDropdown() {
   }
 }
 
-function openReplacementMenu(oldLayer, layerId, container) {
-  
-  // Exclusion des types non remplaçables
-if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].includes(oldLayer.type)) {
-  container.innerHTML = "<div style='color:#900;'>Ce type d’élément ne peut pas être remplacé.</div>";
-  return;
+function clickOutsidePresetDropdown(e) {
+  const container = document.getElementById("contextMenuContainer");
+  if (container && !container.contains(e.target)) {
+    removePresetDropdown();
+  }
 }
-  
-  // Supprime les éléments enfants existants (dropdown + boutons)
+
+function openReplacementMenu(oldLayer, layerId, container) {
+  // Exclusion des types non remplaçables
+  if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].includes(oldLayer.type)) {
+    container.innerHTML = "<div style='color:#900;'>Ce type d’élément ne peut pas être remplacé.</div>";
+    return;
+  }
+
   container.innerHTML = "";
 
   const info = document.createElement("div");
@@ -2462,7 +2451,6 @@ if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].include
     delete aLayers[layerId];
     document.getElementById(layerId).remove();
 
-    // Réinsère à la même position
     const newDiv = addLayer(blockList[newINum].text, newLayer);
     const list = document.getElementById("layerlist");
     list.insertBefore(list.lastChild, list.children[index + 1]);
