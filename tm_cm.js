@@ -605,7 +605,7 @@ function selectLayer() {
 
       for (let pch=0; pch < domParams.children.length; pch++) {
         let thispch = domParams.children[pch];
-        if (thisLayerParams.indexOf(thispch.id) == -1) {
+        if (thisLayerParams.indexOf(thispch.id) === -1 && !(thispch.id === "data" && thisLayerParams.includes("value"))) {
           // not in params, hide it
           thispch.classList.add("w3-hide");
         } else {
