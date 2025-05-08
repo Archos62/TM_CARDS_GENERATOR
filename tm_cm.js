@@ -605,7 +605,7 @@ function selectLayer() {
 
       for (let pch=0; pch < domParams.children.length; pch++) {
         let thispch = domParams.children[pch];
-        if (thisLayerParams.indexOf(thispch.id) === -1 && !(thispch.id === "data" && thisLayerParams.includes("value"))) {
+        if (thisLayerParams.indexOf(thispch.id) == -1) {
           // not in params, hide it
           thispch.classList.add("w3-hide");
         } else {
@@ -1160,7 +1160,7 @@ function addBlock(th) {
     // 🔁 Si c'est un bloc M€ (megacredit), ajouter une valeur par défaut
   if (thisBlock.src === "megacredit") {
     layer.data = "1"; // valeur visible
-    layer.params += " value"; // active champ data dans l'UI
+    layer.params += " value alltext"; // active champ data dans l'UI
   }
   
   
