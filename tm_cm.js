@@ -2316,8 +2316,54 @@ function showPresetDropdown(layer, x, y, layerId) {
     }
   });
 
-  document.body.appendChild(dropdown);
+  // Ajoute le menu dans un conteneur flottant
+  const container = document.createElement("div");
+  container.id = "dynamicPresetDropdown";
+  container.style.position = "fixed";
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
+  container.style.zIndex = 1000;
+  container.style.background = "#fff";
+  container.style.border = "1px solid #888";
+  container.style.padding = "8px";
+  container.style.boxShadow = "2px 2px 6px rgba(0,0,0,0.3)";
+  container.style.fontSize = "14px";
+
+  container.appendChild(dropdown);
+
+  // 🔁 Bouton "Dupliquer"
+  const btnClone = document.createElement("button");
+  btnClone.textContent = "Dupliquer";
+  btnClone.style.display = "block";
+  btnClone.style.marginTop = "6px";
+  btnClone.onclick = () => {
+    const newLayer = structuredClone(aLayers[layerId]);
+    newLayer.x += 20;
+    newLayer.y += 20;
+    addLayer("Clone", newLayer);
+    drawProject();
+    removePresetDropdown();
+  };
+  container.appendChild(btnClone);
+
+  // 🗑️ Bouton "Supprimer"
+  const btnDelete = document.createElement("button");
+  btnDelete.textContent = "Supprimer";
+  btnDelete.style.display = "block";
+  btnDelete.style.marginTop = "4px";
+  btnDelete.style.color = "white";
+  btnDelete.style.backgroundColor = "#c00";
+  btnDelete.onclick = () => {
+    document.getElementById(layerId)?.remove();
+    delete aLayers[layerId];
+    drawProject();
+    removePresetDropdown();
+  };
+  container.appendChild(btnDelete);
+
+  document.body.appendChild(container);
   document.addEventListener("click", clickOutsidePresetDropdown);
+
 }
 
 function clickOutsidePresetDropdown(e) {
