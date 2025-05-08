@@ -673,31 +673,35 @@ function drawProject() {
     let layer = aLayers[layerDivs[i].id];
     imagesForSaving.push(layer);
     switch (layer.type) {
-      case "block":
-        if (i==0) {
-          c.height = layer.height;
-          c.width = layer.width;
-        }
-        // layer = {type:"block", obj:{}, x:0, y:0, width:0, height:0, params:"allimages"};
-        if (layer.obg) { // draw others background?
-          let brdr = 3;
-          if (!otherBgList[blockList[layer.iNum].otherbg]) {
-            for (let j=0; j < blockList.length; j++) {
-              if (blockList[j].text == blockList[layer.iNum].otherbg) {
-                fetchBlock(j);
-                break;
-              }
-            }
-          } else if (otherBgList[blockList[layer.iNum].otherbg].complete) {
-            ctx.drawImage(otherBgList[blockList[layer.iNum].otherbg],layer.x-brdr,layer.y-brdr,layer.width+2*brdr,layer.height+2*brdr);
-          }
-        }
-        if (!blockList[layer.iNum].obj) {
-          fetchBlock(layer.iNum);
-        } else if (blockList[layer.iNum].obj.complete) {
-          ctx.drawImage(blockList[layer.iNum].obj,layer.x,layer.y,layer.width,layer.height);
-        }
-        break;
+		case "block":
+		  if (i == 0) {
+			c.height = layer.height;
+			c.width = layer.width;
+		  }
+
+		  if (layer.obg) {
+			let brdr = 3;
+			const bgName = blockList[layer.iNum]?.otherbg;
+			if (bgName && otherBgList[bgName]?.complete) {
+			  ctx.drawImage(otherBgList[bgName], layer.x - brdr, layer.y - brdr, layer.width + 2 * brdr, layer.height + 2 * brdr);
+			}
+		  }
+
+		  if (!blockList[layer.iNum].obj) {
+			fetchBlock(layer.iNum);
+		  } else if (blockList[layer.iNum].obj.complete) {
+			ctx.drawImage(blockList[layer.iNum].obj, layer.x, layer.y, layer.width, layer.height);
+
+			// 🔁 Si c'est un bloc M€ avec valeur textuelle, on l'affiche centré
+			if (blockList[layer.iNum]?.src === "megacredit" && layer.data) {
+			  ctx.textAlign = "center";
+			  ctx.font = `normal normal 45px Prototype`;
+			  ctx.fillStyle = "#000000";
+			  ctx.fillText(layer.data, layer.x + layer.width / 2, layer.y + layer.height / 2 + 17);
+			}
+		  }
+		  break;
+		
       case "text":
 
         // layer = {type:"text", data:"", x:0, y:0, width:0, height:0,
@@ -1152,6 +1156,14 @@ function addBlock(th) {
   if (blockDefaults[thisBlock.putUnder]) {
     layer.params += " allpreset";
   }
+  
+    // 🔁 Si c'est un bloc M€ (megacredit), ajouter une valeur par défaut
+  if (thisBlock.src === "megacredit") {
+    layer.data = "1"; // valeur visible
+    layer.params += " value"; // active champ data dans l'UI
+  }
+  
+  
   // layer.width = thisBlock.obj.width;
   // layer.height = thisBlock.obj.height;
   let newLayer = addLayer(thisBlock.text, layer);
