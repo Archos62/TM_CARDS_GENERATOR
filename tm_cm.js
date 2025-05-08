@@ -2240,3 +2240,98 @@ elem.addEventListener("mousedown", dragStart, false);
 elem.addEventListener("mouseup", dragEnd, false);
 elem.addEventListener("mousemove", drag, false);
 
+//Add double-click capability
+elem.addEventListener("dblclick", onCanvasDblClick, false);
+
+function onCanvasDblClick(event) {
+  const mouse = getMousePos(event);
+  const layerDivs = document.getElementsByClassName("divRec");
+
+  for (let i = layerDivs.length - 1; i >= 0; i--) {
+    const layer = aLayers[layerDivs[i].id];
+    if (clickIsWithinLayer(layer, mouse.x, mouse.y)) {
+      // Sauvegarde la sélection
+      selectLayer.call(layerDivs[i].children[0]);
+
+      // Affiche le menu dropdown à la position du curseur
+      showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
+      return;
+    }
+  }
+}
+
+function showPresetDropdown(layer, x, y, layerId) {
+  removePresetDropdown();
+
+  const dropdown = document.createElement("select");
+  dropdown.id = "dynamicPresetDropdown";
+  dropdown.style.position = "fixed";
+  dropdown.style.left = `${x}px`;
+  dropdown.style.top = `${y}px`;
+  dropdown.style.zIndex = 1000;
+  dropdown.style.fontSize = "16px";
+
+  let dName = "";
+  if (layer.type === "block") {
+    dName = blockList[layer.iNum]?.putUnder;
+  } else if (layer.type === "text") {
+    dName = "text";
+  } else if (layer.type === "production") {
+    dName = "production";
+  }
+
+  if (!blockDefaults[dName]) return;
+
+  const defaultList = blockDefaults[dName];
+
+  const defaultOption = document.createElement("option");
+  defaultOption.text = "⮕ Choisir un preset";
+  defaultOption.value = "";
+  dropdown.appendChild(defaultOption);
+
+  defaultList.forEach((preset, index) => {
+    const option = document.createElement("option");
+    option.text = preset.label;
+    option.value = index;
+    dropdown.appendChild(option);
+  });
+
+  dropdown.addEventListener("change", (e) => {
+    if (e.target.value !== "") {
+      const sel = Number(e.target.value);
+      reloading = true;
+      for (let key in defaultList[sel]) {
+        if (key === "label") continue;
+        const input = document.getElementById("input" + key);
+        if (input) {
+          input.value = defaultList[sel][key];
+          updateValue(input);
+        } else {
+          aLayers[layerId][key] = defaultList[sel][key];
+        }
+      }
+      reloading = false;
+      drawProject();
+      removePresetDropdown();
+    }
+  });
+
+  document.body.appendChild(dropdown);
+  document.addEventListener("click", clickOutsidePresetDropdown);
+}
+
+function clickOutsidePresetDropdown(e) {
+  const dropdown = document.getElementById("dynamicPresetDropdown");
+  if (dropdown && !dropdown.contains(e.target)) {
+    removePresetDropdown();
+    document.removeEventListener("click", clickOutsidePresetDropdown);
+  }
+}
+
+function removePresetDropdown() {
+  const existing = document.getElementById("dynamicPresetDropdown");
+  if (existing) {
+    existing.remove();
+    document.removeEventListener("click", clickOutsidePresetDropdown);
+  }
+}
