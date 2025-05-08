@@ -2363,8 +2363,16 @@ function showPresetDropdown(layer, x, y, layerId) {
   btnReplace.style.display = "block";
   btnReplace.style.marginTop = "4px";
   btnReplace.onclick = () => {
-    openReplacementMenu(aLayers[layerId], layerId, container);
-  };
+	  
+	// ⛔️ Suspend l'écoute temporairement
+	document.removeEventListener("click", clickOutsidePresetDropdown);
+    // 📦 Remplace le menu
+	openReplacementMenu(aLayers[layerId], layerId, container);
+	// ✅ Réactive après un cycle
+	setTimeout(() => {
+		document.addEventListener("click", clickOutsidePresetDropdown);
+	  }, 0);
+	};
   container.appendChild(btnReplace);
 
   document.body.appendChild(container);
