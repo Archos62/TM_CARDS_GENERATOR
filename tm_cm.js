@@ -2409,7 +2409,7 @@ function clickOutsidePresetDropdown(e) {
 }
 
 function openReplacementMenu(oldLayer, layerId, container) {
-  // Exclusion des types non remplaçables
+  // ⛔ Exclusion des types non remplaçables
   if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].includes(oldLayer.type)) {
     container.innerHTML = "<div style='color:#900;'>Ce type d’élément ne peut pas être remplacé.</div>";
     return;
@@ -2425,40 +2425,35 @@ function openReplacementMenu(oldLayer, layerId, container) {
   const select = document.createElement("select");
   select.style.width = "100%";
 
-  const compatibleBlocks = blockList
-    .map((block, i) => ({...block, iNum: i}))
-    .filter(b => b.putUnder === blockList[oldLayer.iNum]?.putUnder && !b.hidden);
+  // Groupe par catégorie
+  const categorized = {};
 
-  const fallbackBlocks = blockList
-    .map((block, i) => ({...block, iNum: i}))
-    .filter(b => !b.hidden && !compatibleBlocks.includes(b));
-
-  const optgroupSame = document.createElement("optgroup");
-  optgroupSame.label = "Même type";
-  compatibleBlocks.forEach(b => {
-    const opt = document.createElement("option");
-    opt.value = b.iNum;
-    opt.text = b.text || b.src;
-    optgroupSame.appendChild(opt);
+  blockList.forEach((block, i) => {
+    if (block.hidden) return;
+    const cat = block.putUnder || "Autres";
+    if (!categorized[cat]) categorized[cat] = [];
+    categorized[cat].push({ ...block, iNum: i });
   });
 
-  const optgroupOther = document.createElement("optgroup");
-  optgroupOther.label = "Autres types";
-  fallbackBlocks.forEach(b => {
-    const opt = document.createElement("option");
-    opt.value = b.iNum;
-    opt.text = b.text || b.src;
-    optgroupOther.appendChild(opt);
+  // Ajoute les <optgroup> triés
+  Object.keys(categorized).sort().forEach(cat => {
+    const group = document.createElement("optgroup");
+    group.label = cat;
+
+    categorized[cat].forEach(b => {
+      const opt = document.createElement("option");
+      opt.value = b.iNum;
+      opt.text = b.text || b.src || `[iNum ${b.iNum}]`;
+      group.appendChild(opt);
+    });
+
+    select.appendChild(group);
   });
 
-  select.appendChild(optgroupSame);
-  select.appendChild(optgroupOther);
   container.appendChild(select);
 
-  const btnConfirm = document.createElement("button");
-  btnConfirm.textContent = "Remplacer";
-  btnConfirm.style.marginTop = "6px";
-  btnConfirm.onclick = () => {
+  // ✅ Applique le remplacement dès sélection
+  select.addEventListener("change", () => {
     const newINum = parseInt(select.value);
     if (isNaN(newINum)) return;
 
@@ -2479,9 +2474,7 @@ function openReplacementMenu(oldLayer, layerId, container) {
 
     drawProject();
     removePresetDropdown();
-  };
-
-  container.appendChild(btnConfirm);
+  });
 }
 
 //Fermeture du echap
