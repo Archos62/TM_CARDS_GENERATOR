@@ -2409,7 +2409,6 @@ function clickOutsidePresetDropdown(e) {
 }
 
 function openReplacementMenu(oldLayer, layerId, container) {
-  // ⛔ Exclusion des types non remplaçables
   if (!("iNum" in oldLayer) || ["userFile", "webFile", "embedded", "base"].includes(oldLayer.type)) {
     container.innerHTML = "<div style='color:#900;'>Ce type d’élément ne peut pas être remplacé.</div>";
     return;
@@ -2425,34 +2424,46 @@ function openReplacementMenu(oldLayer, layerId, container) {
   const select = document.createElement("select");
   select.style.width = "100%";
 
-  // Groupe par catégorie
+  const currentType = blockList[oldLayer.iNum]?.putUnder || "Autres";
+
+  // 1. Ajouter d’abord les éléments du même type sans optgroup
+  const sameTypeOptions = blockList
+    .map((block, i) => ({ ...block, iNum: i }))
+    .filter(b => b.putUnder === currentType && !b.hidden);
+
+  sameTypeOptions.forEach(b => {
+    const opt = document.createElement("option");
+    opt.value = b.iNum;
+    opt.text = `🔁 ${b.text || b.src || `[iNum ${b.iNum}]`}`;
+    select.appendChild(opt);
+  });
+
+  // 2. Ajouter les autres types regroupés par catégorie
   const categorized = {};
 
   blockList.forEach((block, i) => {
     if (block.hidden) return;
+    if (block.putUnder === currentType) return; // déjà dans les premiers
     const cat = block.putUnder || "Autres";
     if (!categorized[cat]) categorized[cat] = [];
     categorized[cat].push({ ...block, iNum: i });
   });
 
-  // Ajoute les <optgroup> triés
   Object.keys(categorized).sort().forEach(cat => {
     const group = document.createElement("optgroup");
     group.label = cat;
-
     categorized[cat].forEach(b => {
       const opt = document.createElement("option");
       opt.value = b.iNum;
       opt.text = b.text || b.src || `[iNum ${b.iNum}]`;
       group.appendChild(opt);
     });
-
     select.appendChild(group);
   });
 
   container.appendChild(select);
 
-  // ✅ Applique le remplacement dès sélection
+  // ✅ Remplacement immédiat à la sélection
   select.addEventListener("change", () => {
     const newINum = parseInt(select.value);
     if (isNaN(newINum)) return;
@@ -2476,6 +2487,7 @@ function openReplacementMenu(oldLayer, layerId, container) {
     removePresetDropdown();
   });
 }
+
 
 //Fermeture du echap
 function handleEscapeClose(e) {
