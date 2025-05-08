@@ -2266,7 +2266,7 @@ function showPresetDropdown(layer, x, y, layerId) {
   removePresetDropdown();
 
   const dropdown = document.createElement("select");
-  dropdown.id = "dynamicPresetDropdown";
+  container.id = "contextMenuContainer";
   dropdown.style.position = "fixed";
   dropdown.style.left = `${x}px`;
   dropdown.style.top = `${y}px`;
@@ -2380,15 +2380,15 @@ function showPresetDropdown(layer, x, y, layerId) {
 }
 
 function clickOutsidePresetDropdown(e) {
-  const dropdown = document.getElementById("dynamicPresetDropdown");
-  if (dropdown && !dropdown.contains(e.target)) {
+  const container = document.getElementById("contextMenuContainer");
+  if (container && !container.contains(e.target)) {
     removePresetDropdown();
     document.removeEventListener("click", clickOutsidePresetDropdown);
   }
 }
 
 function removePresetDropdown() {
-  const existing = document.getElementById("dynamicPresetDropdown");
+  const existing = document.getElementById("contextMenuContainer");
   if (existing) {
     existing.remove();
     document.removeEventListener("click", clickOutsidePresetDropdown);
