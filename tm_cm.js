@@ -881,32 +881,30 @@ const arAlt = {
 };
 
 function updateValue(th) {
-  // called after user updates a value
-  // OR after user select preset (reloading==true, in this case)
+  // appelée après modification d’un champ d’un calque
   let layer = th.parentNode.parentNode.parentNode.parentNode;
   let layerName = layer.id;
   let fieldName = th.id.slice(5);
-  if (th.type == "number") {
-    let newValue =  Number(th.value);
-    // deal with group moves
-    if ((fieldName == "x") || (fieldName == "y")) {
-      // check if part of group
+
+  if (th.type === "number") {
+    let newValue = Number(th.value);
+
+    // gestion des déplacements groupés
+    if ((fieldName === "x") || (fieldName === "y")) {
       if (layer.getElementsByClassName("groupcheck")[0].checked) {
-        // adjust all other members of group by same amount
-        let thisgroup = document.getElementsByClassName("groupcheck");
-        let diff = newValue - aLayers[layerName][fieldName];
-        for (let x=0; x < thisgroup.length; x++) {
+        const diff = newValue - aLayers[layerName][fieldName];
+        const thisgroup = document.getElementsByClassName("groupcheck");
+        for (let x = 0; x < thisgroup.length; x++) {
           if (!thisgroup[x].checked) continue;
           let groupLayerId = thisgroup[x].parentNode.id;
           aLayers[groupLayerId][fieldName] += diff;
         }
       }
     }
-    if (arAlt[fieldName] && !reloading && (aLayers[layerName].type != "text")) {
-      // it is width/height/swidth/sheight field
+
+    // redimension proportionnelle si "lar" ou "slar" coché
+    if (arAlt[fieldName] && !reloading && (aLayers[layerName].type !== "text")) {
       if (document.getElementById(arAlt[fieldName][1]).checked) {
-        // lar or slar (as appropriate) is checked
-        // compute otherValue (e.g. if fieldname = width, otherValue = newValue * height/width)
         let otherValue = newValue * aLayers[layerName][arAlt[fieldName][0]] / aLayers[layerName][fieldName];
         otherValue = Math.round(otherValue * 1000) / 1000;
         if ((otherValue) && (Math.abs(otherValue - Math.round(otherValue)) < 0.01)) otherValue = Math.round(otherValue);
@@ -914,17 +912,36 @@ function updateValue(th) {
         document.getElementById("input" + arAlt[fieldName][0]).value = otherValue;
       }
     }
+
     aLayers[layerName][fieldName] = newValue;
-  } else if (th.type == "checkbox") {
+  } else if (th.type === "checkbox") {
     aLayers[layerName][fieldName] = th.checked;
   } else {
-    if (th.id == "inputfont") {
+    if (th.id === "inputfont") {
       aLayers[layerName].filename = fontList[th.value];
     }
     aLayers[layerName][fieldName] = th.value;
   }
+
+  // 🔁 Si le calque est un bloc M€, synchroniser son texte associé
+  if (aLayers[layerName].type === "block" && blockList[aLayers[layerName].iNum]?.src === "megacredit") {
+    const textEntry = Object.entries(aLayers).find(
+      ([_, l]) => l.type === "text" && l.parent === layerName
+    );
+    if (textEntry) {
+      const [textId, textLayer] = textEntry;
+      const bloc = aLayers[layerName];
+
+      textLayer.x = bloc.x + bloc.width / 2;
+      textLayer.y = bloc.y + bloc.height / 2 + 17;
+      textLayer.width = bloc.width;
+      textLayer.height = 45;
+    }
+  }
+
   drawProject();
 }
+
 
 
 function setPresets(th){
@@ -1162,6 +1179,31 @@ function addBlock(th) {
     drawProject();
   } else {
     fetchBlock(layer.iNum);
+  }
+  
+   // 🔁 Ajout auto d'un texte centré si bloc = Megacredit (iNum 12)
+  if (blockList[layer.iNum]?.src === "megacredit") {
+    const textLayer = {
+      type: "text",
+      name: "M€ Text",
+      data: "1",
+      x: newLayer.x + newLayer.width / 2,
+      y: newLayer.y + newLayer.height / 2 + 17,
+      width: newLayer.width,
+      height: 45,
+      font: "Prototype",
+      style: "normal",
+      weight: "normal",
+      color: "#000000",
+      justify: "center",
+      params: "color alltext"
+    };
+
+    // 🔗 lien parent → identifiant du bloc M€
+    const layerId = Object.keys(aLayers).find(k => aLayers[k] === newLayer);
+    if (layerId) textLayer.parent = layerId;
+
+    addLayer("M€ Text", textLayer);
   }
 
   return newLayer;
