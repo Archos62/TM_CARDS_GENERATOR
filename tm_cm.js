@@ -2368,7 +2368,9 @@ function showPresetDropdown(layer, x, y, layerId) {
   container.appendChild(btnReplace);
 
   document.body.appendChild(container);
-  document.addEventListener("click", clickOutsidePresetDropdown);
+	setTimeout(() => {
+	document.addEventListener("click", clickOutsidePresetDropdown);
+}, 0);
 }
 
 function removePresetDropdown() {
