@@ -1196,6 +1196,7 @@ function addBlock(th) {
       weight: "normal",
       color: "#000000",
       justify: "center",
+	  lineSpace:0,
       params: "color alltext"
     };
 
