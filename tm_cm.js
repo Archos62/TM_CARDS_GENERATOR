@@ -2362,6 +2362,17 @@ function showPresetDropdown(layer, x, y, layerId) {
     removePresetDropdown();
   };
   container.appendChild(btnDelete);
+  
+  // 🔄 Bouton "Remplacer"
+	const btnReplace = document.createElement("button");
+	btnReplace.textContent = "Remplacer";
+	btnReplace.style.display = "block";
+	btnReplace.style.marginTop = "4px";
+	btnReplace.onclick = () => {
+	  openReplacementMenu(aLayers[layerId], layerId, container);
+	};
+	container.appendChild(btnReplace);
+
 
   document.body.appendChild(container);
   document.addEventListener("click", clickOutsidePresetDropdown);
@@ -2382,4 +2393,76 @@ function removePresetDropdown() {
     existing.remove();
     document.removeEventListener("click", clickOutsidePresetDropdown);
   }
+}
+
+function openReplacementMenu(oldLayer, layerId, container) {
+  // Supprime les éléments enfants existants (dropdown + boutons)
+  container.innerHTML = "";
+
+  const info = document.createElement("div");
+  info.textContent = "Choisir un remplacement :";
+  info.style.marginBottom = "6px";
+  container.appendChild(info);
+
+  const select = document.createElement("select");
+  select.style.width = "100%";
+
+  const compatibleBlocks = blockList
+    .map((block, i) => ({...block, iNum: i}))
+    .filter(b => b.putUnder === blockList[oldLayer.iNum]?.putUnder && !b.hidden);
+
+  const fallbackBlocks = blockList
+    .map((block, i) => ({...block, iNum: i}))
+    .filter(b => !b.hidden && !compatibleBlocks.includes(b));
+
+  const optgroupSame = document.createElement("optgroup");
+  optgroupSame.label = "Même type";
+  compatibleBlocks.forEach(b => {
+    const opt = document.createElement("option");
+    opt.value = b.iNum;
+    opt.text = b.text || b.src;
+    optgroupSame.appendChild(opt);
+  });
+
+  const optgroupOther = document.createElement("optgroup");
+  optgroupOther.label = "Autres types";
+  fallbackBlocks.forEach(b => {
+    const opt = document.createElement("option");
+    opt.value = b.iNum;
+    opt.text = b.text || b.src;
+    optgroupOther.appendChild(opt);
+  });
+
+  select.appendChild(optgroupSame);
+  select.appendChild(optgroupOther);
+  container.appendChild(select);
+
+  const btnConfirm = document.createElement("button");
+  btnConfirm.textContent = "Remplacer";
+  btnConfirm.style.marginTop = "6px";
+  btnConfirm.onclick = () => {
+    const newINum = parseInt(select.value);
+    if (isNaN(newINum)) return;
+
+    const index = Array.from(document.getElementById("layerlist").children)
+      .findIndex(div => div.id === layerId);
+
+    const newLayer = {
+      ...structuredClone(oldLayer),
+      iNum: newINum
+    };
+
+    delete aLayers[layerId];
+    document.getElementById(layerId).remove();
+
+    // Réinsère à la même position
+    const newDiv = addLayer(blockList[newINum].text, newLayer);
+    const list = document.getElementById("layerlist");
+    list.insertBefore(list.lastChild, list.children[index + 1]);
+
+    drawProject();
+    removePresetDropdown();
+  };
+
+  container.appendChild(btnConfirm);
 }
