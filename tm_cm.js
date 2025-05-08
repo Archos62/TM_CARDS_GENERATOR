@@ -2240,20 +2240,22 @@ elem.addEventListener("mousedown", dragStart, false);
 elem.addEventListener("mouseup", dragEnd, false);
 elem.addEventListener("mousemove", drag, false);
 
-//Add double-click capability
-elem.addEventListener("dblclick", onCanvasDblClick, false);
+//Add right click capability
+elem.addEventListener("contextmenu", onCanvasRightClick, false);
 
-function onCanvasDblClick(event) {
+function onCanvasRightClick(event) {
+  event.preventDefault(); // empêche le menu contextuel du navigateur
+
   const mouse = getMousePos(event);
   const layerDivs = document.getElementsByClassName("divRec");
 
   for (let i = layerDivs.length - 1; i >= 0; i--) {
     const layer = aLayers[layerDivs[i].id];
     if (clickIsWithinLayer(layer, mouse.x, mouse.y)) {
-      // Sauvegarde la sélection
+      // Sélectionne le calque dans l’UI
       selectLayer.call(layerDivs[i].children[0]);
 
-      // Affiche le menu dropdown à la position du curseur
+      // Affiche le menu contextuel enrichi
       showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
       return;
     }
