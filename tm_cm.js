@@ -1514,7 +1514,7 @@ function addEmbed() {
 type2FuncList.line = addLine;
 
 function addLine() {
-  let layer = {type:"line", x:0, y:0, width:2, angle:0, len:100, color:"#000000",
+  let layer = {type:"line", x:213, y:1005, width:2, angle:0, len:400, color:"#000000",
               opacity:1, params:"allangle alllen allpreset allcolor"};
   let newLayer = addLayer("Line", layer);
   drawProject();
