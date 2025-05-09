@@ -135,11 +135,11 @@ var blockList = [
   {putUnder: "resources", text: "Prelude", src:"card_prelude", otherbg:"res_otherbg"},
   {putUnder: "resources", text: "Corpo", src:"card_corpo", otherbg:"res_otherbg"},
   {putUnder: "tiles", text: "", src:"colony_plate"},
-  {putUnder: "tiles", text: "Standard project", src:"Standard_tile"},
-  {putUnder: "resources", text: "Bronze", src:"bronze", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "Silver", src:"silver", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "Gold", src:"gold", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "Blank", src:"blank", otherbg:"res_otherbg"}
+  {putUnder: "tiles", text: "Standard project", src:"Standard_tile"}//,
+  //{putUnder: "resources", text: "", src:"bronze", otherbg:"res_otherbg"},
+  //{putUnder: "resources", text: "", src:"silver", otherbg:"res_otherbg"},
+  //{putUnder: "resources", text: "", src:"gold", otherbg:"res_otherbg"},
+  //{putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg"}
 ];
 
 var blockDefaults = {
