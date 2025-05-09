@@ -683,13 +683,20 @@ function drawProject() {
 			c.width = layer.width;
 		  }
 
-		  if (layer.obg) {
-			let brdr = 3;
-			const bgName = blockList[layer.iNum]?.otherbg;
-			if (bgName && otherBgList[bgName]?.complete) {
-			  ctx.drawImage(otherBgList[bgName], layer.x - brdr, layer.y - brdr, layer.width + 2 * brdr, layer.height + 2 * brdr);
-			}
-		  }
+        // layer = {type:"block", obj:{}, x:0, y:0, width:0, height:0, params:"allimages"};
+        if (layer.obg) { // draw others background?
+          let brdr = 3;
+          if (!otherBgList[blockList[layer.iNum].otherbg]) {
+            for (let j=0; j < blockList.length; j++) {
+              if (blockList[j].text == blockList[layer.iNum].otherbg) {
+                fetchBlock(j);
+                break;
+              }
+            }
+          } else if (otherBgList[blockList[layer.iNum].otherbg].complete) {
+            ctx.drawImage(otherBgList[blockList[layer.iNum].otherbg],layer.x-brdr,layer.y-brdr,layer.width+2*brdr,layer.height+2*brdr);
+          }
+        }
 
 		  if (!blockList[layer.iNum].obj) {
 			fetchBlock(layer.iNum);
