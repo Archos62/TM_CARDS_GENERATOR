@@ -31,7 +31,7 @@ var blockList = [
   {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg", default:"MC"}, //12
   {putUnder: "misc", text: "mc_otherbg", src:"other_player_background", hidden:true},
   {putUnder: "misc", text: "", src:"arrow", default:"Arrow"},
-  {putUnder: "misc", text: "Asterisk", src:"asterisc", default:"Asterisc"},
+  {putUnder: "misc", text: "Asterisk", src:"asterisc", default:"Asterisk"},
   {putUnder: "misc", text: "Slash", src:"bar",default:"Slash"},
   {putUnder: "misc", text: "", src:"chairman", default:"Delegate"},
   {putUnder: "misc", text: "", src:"colon", default:"Colon"},
