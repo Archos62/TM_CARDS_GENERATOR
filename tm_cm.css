@@ -340,7 +340,7 @@ div.selected {
   border: 3px solid black; /* style pour la sélection "normale" */
 }
 
-.dragdropdiv.selected {
+#layerlist div.selected {
   border: 2px solid #2196F3; /* bleu clair pour multi-sélection visuelle */
   background-color: rgba(33, 150, 243, 0.1);
 }
