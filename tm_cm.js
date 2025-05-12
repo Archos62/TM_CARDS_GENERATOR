@@ -1180,11 +1180,15 @@ function addBlock(th) {
   let newLayer = addLayer(thisBlock.text, layer);
   
 	// ✅ Applique le preset par défaut si défini (ex: "TR")
-	if (thisBlock.default && blockDefaults[thisBlock.default]) {
-	  const def = blockDefaults[thisBlock.default];
-	  for (let key in def) {
-		if (key === "label") continue;
-		newLayer[key] = def[key];
+	if (thisBlock.default && thisBlock.putUnder && Array.isArray(blockDefaults[thisBlock.putUnder])) {
+	  const presetList = blockDefaults[thisBlock.putUnder];
+	  const match = presetList.find(p => p.label === thisBlock.default);
+	  if (match) {
+		for (let key in match) {
+		  if (key !== "label") newLayer[key] = match[key];
+		}
+	  } else {
+		console.warn(`Preset '${thisBlock.default}' non trouvé dans blockDefaults['${thisBlock.putUnder}']`);
 	  }
 	}
   
