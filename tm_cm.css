@@ -336,9 +336,14 @@ section { */
     top: 0;
   }
   
-  div.selected {
-    border: 3px solid black;
-  }
+div.selected {
+  border: 3px solid black; /* style pour la sélection "normale" */
+}
+
+.dragdropdiv.selected {
+  border: 2px solid #2196F3; /* bleu clair pour multi-sélection visuelle */
+  background-color: rgba(33, 150, 243, 0.1);
+}
 
   input[type=number]{
     width: 8em;
@@ -347,4 +352,3 @@ section { */
     transform: scale(2);
     margin: 0px 8px;
   } 
-

@@ -2299,7 +2299,12 @@ function onCanvasRightClick(event) {
 		  selectLayer.call(layerDivs[i].children[0]);
 		  selectedLayers = [layerDivs[i].id];
 		}
-      showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
+      // ✅ Si plusieurs calques sélectionnés → menu groupe
+      if (selectedLayers.length > 1) {
+        showGroupContextMenu(event.clientX, event.clientY);
+      } else {
+        showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
+      }
       return;
     }
   }
@@ -2602,6 +2607,86 @@ function clearLayerSelection() {
     document.getElementById(id)?.classList.remove("selected");
   });
   selectedLayers = [];
+}
+
+function showGroupContextMenu(x, y) {
+  removePresetDropdown(); // Réutilise le système existant
+
+  const container = document.createElement("div");
+  container.id = "contextMenuContainer";
+  container.style.position = "fixed";
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
+  container.style.zIndex = 1000;
+  container.style.background = "#fff";
+  container.style.border = "1px solid #888";
+  container.style.padding = "8px";
+  container.style.boxShadow = "2px 2px 6px rgba(0,0,0,0.3)";
+  container.style.fontSize = "14px";
+
+  const title = document.createElement("div");
+  title.textContent = "Aligner les éléments :";
+  title.style.marginBottom = "6px";
+  container.appendChild(title);
+
+  const alignments = [
+    { label: "Gauche", fn: alignLeft },
+    { label: "Centre horizontal", fn: alignCenterX },
+    { label: "Droite", fn: alignRight },
+    { label: "Haut", fn: alignTop },
+    { label: "Milieu vertical", fn: alignCenterY },
+    { label: "Bas", fn: alignBottom }
+  ];
+
+  alignments.forEach(a => {
+    const btn = document.createElement("button");
+    btn.textContent = a.label;
+    btn.style.display = "block";
+    btn.style.marginBottom = "4px";
+    btn.onclick = () => {
+      a.fn();
+      drawProject();
+      removePresetDropdown();
+    };
+    container.appendChild(btn);
+  });
+
+  document.body.appendChild(container);
+  setTimeout(() => {
+    document.addEventListener("click", clickOutsidePresetDropdown);
+  }, 0);
+}
+
+function alignLeft() {
+  const xMin = Math.min(...selectedLayers.map(id => aLayers[id].x));
+  selectedLayers.forEach(id => aLayers[id].x = xMin);
+}
+
+function alignCenterX() {
+  const centers = selectedLayers.map(id => aLayers[id].x + aLayers[id].width / 2);
+  const target = centers.reduce((a, b) => a + b) / centers.length;
+  selectedLayers.forEach(id => aLayers[id].x = target - aLayers[id].width / 2);
+}
+
+function alignRight() {
+  const xMax = Math.max(...selectedLayers.map(id => aLayers[id].x + aLayers[id].width));
+  selectedLayers.forEach(id => aLayers[id].x = xMax - aLayers[id].width);
+}
+
+function alignTop() {
+  const yMin = Math.min(...selectedLayers.map(id => aLayers[id].y));
+  selectedLayers.forEach(id => aLayers[id].y = yMin);
+}
+
+function alignCenterY() {
+  const centers = selectedLayers.map(id => aLayers[id].y + aLayers[id].height / 2);
+  const target = centers.reduce((a, b) => a + b) / centers.length;
+  selectedLayers.forEach(id => aLayers[id].y = target - aLayers[id].height / 2);
+}
+
+function alignBottom() {
+  const yMax = Math.max(...selectedLayers.map(id => aLayers[id].y + aLayers[id].height));
+  selectedLayers.forEach(id => aLayers[id].y = yMax - aLayers[id].height);
 }
 
 
