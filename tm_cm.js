@@ -16,62 +16,62 @@ var dragOffsetY;
 var keyFocusLayer;
 
 var blockList = [
-  {putUnder: "templates", text: "Green Card", src:"green_normal"}, //0
-  {putUnder: "templates", text: "Green Small Bottom", src:"green_small_bottom"}, //1
-  {putUnder: "templates", text: "Green Big Bottom", src:"green_big_bottom"}, //2
-  {putUnder: "templates", text: "Blue Card", src:"blue_normal"},
-  {putUnder: "templates", text: "Blue Big Bottom", src:"blue_big_bottom"},
-  {putUnder: "templates", text: "Blue Big Top", src:"blue_big_top"},
-  {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top"},  
-  {putUnder: "templates", text: "Red Card", src:"red_normal"},
-  {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom"},
-  {putUnder: "globalparameters", text: "", src:"oxygen"}, //9
-  {putUnder: "globalparameters", text: "", src:"temperature"}, //10
-  {putUnder: "globalparameters", text: "", src:"venus"},  //11
-  {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg"}, //12
+  {putUnder: "templates", text: "Green Card", src:"green_normal", default:"Vertical Card"}, //0
+  {putUnder: "templates", text: "Green Small Bottom", src:"green_small_bottom", default:"Vertical Card"}, //1
+  {putUnder: "templates", text: "Green Big Bottom", src:"green_big_bottom", default:"Vertical Card"}, //2
+  {putUnder: "templates", text: "Blue Card", src:"blue_normal", default:"Vertical Card"},
+  {putUnder: "templates", text: "Blue Big Bottom", src:"blue_big_bottom", default:"Vertical Card"},
+  {putUnder: "templates", text: "Blue Big Top", src:"blue_big_top", default:"Vertical Card"},
+  {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top", default:"Vertical Card"},  
+  {putUnder: "templates", text: "Red Card", src:"red_normal", default:"Vertical Card"},
+  {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom", default:"Vertical Card"},
+  {putUnder: "globalparameters", text: "", src:"oxygen", default:"Oxygene"}, //9
+  {putUnder: "globalparameters", text: "", src:"temperature", default:"Temp"}, //10
+  {putUnder: "globalparameters", text: "", src:"venus", default:"Venus"},  //11
+  {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg", default:"MC"}, //12
   {putUnder: "misc", text: "mc_otherbg", src:"other_player_background", hidden:true},
-  {putUnder: "misc", text: "", src:"arrow"},
-  {putUnder: "misc", text: "Asterisk", src:"asterisc"},
-  {putUnder: "misc", text: "Slash", src:"bar"},
-  {putUnder: "misc", text: "", src:"chairman"},
-  {putUnder: "misc", text: "", src:"colon"},
-  {putUnder: "misc", text: "", src:"delegate"},
-  {putUnder: "misc", text: "", src:"influence"},
-  {putUnder: "parties", text: "", src:"bureacrats"},
-  {putUnder: "parties", text: "", src:"centrists"},
-  {putUnder: "parties", text: "", src:"empower"},
-  {putUnder: "parties", text: "", src:"greens"},
-  {putUnder: "parties", text: "", src:"kelvinists"},
-  {putUnder: "parties", text: "", src:"mars_first"},
-  {putUnder: "parties", text: "", src:"populists"},
-  {putUnder: "parties", text: "", src:"reds"},
-  {putUnder: "parties", text: "", src:"scientists"},
-  {putUnder: "parties", text: "", src:"spome"},
-  {putUnder: "parties", text: "", src:"transhumanists"},
-  {putUnder: "parties", text: "", src:"unity"},
+  {putUnder: "misc", text: "", src:"arrow", default:"Arrow"},
+  {putUnder: "misc", text: "Asterisk", src:"asterisc", default:"Asterisc"},
+  {putUnder: "misc", text: "Slash", src:"bar",default:"Slash"},
+  {putUnder: "misc", text: "", src:"chairman", default:"Delegate"},
+  {putUnder: "misc", text: "", src:"colon", default:"Colon"},
+  {putUnder: "misc", text: "", src:"delegate", default:"Delegate"},
+  {putUnder: "misc", text: "", src:"influence", default:"Influence"},
+  {putUnder: "parties", text: "", src:"bureacrats", default:"Party"},
+  {putUnder: "parties", text: "", src:"centrists", default:"Party"},
+  {putUnder: "parties", text: "", src:"empower", default:"Party"},
+  {putUnder: "parties", text: "", src:"greens", default:"Party"},
+  {putUnder: "parties", text: "", src:"kelvinists", default:"Party"},
+  {putUnder: "parties", text: "", src:"mars_first", default:"Party"},
+  {putUnder: "parties", text: "", src:"populists", default:"Party"},
+  {putUnder: "parties", text: "", src:"reds", default:"Party"},
+  {putUnder: "parties", text: "", src:"scientists", default:"Party"},
+  {putUnder: "parties", text: "", src:"spome", default:"Party"},
+  {putUnder: "parties", text: "", src:"transhumanists", default:"Party"},
+  {putUnder: "parties", text: "", src:"unity", default:"Party"},
   {putUnder: "productionboxes", text: "prod_nxn", src:"nxn", hidden: true},
   // {putUnder: "productionboxes", text: "prod_otherbg", src:"other_player_background", hidden:true},
-  {putUnder: "requisites", text: "Max Requirement", src:"max_big"},
-  {putUnder: "requisites", text: "Min Requirement (big)", src:"min_big"},
-  {putUnder: "requisites", text: "Min Requirement", src:"min_medium"},
-  {putUnder: "requisites", text: "Min Requirement (small)", src:"min_small"},
-  {putUnder: "requisites", text: "No Requirement", src:"normal"},
-  {putUnder: "resources", text: "", src:"animal", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"card", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"data", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"fighter", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"floater", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"heat", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"microbe", otherbg:"res_otherbg"},
+  {putUnder: "requisites", text: "Max Requirement", src:"max_big", default:"Max"},
+  {putUnder: "requisites", text: "Min Requirement (big)", src:"min_big", default:"Min Large"},
+  {putUnder: "requisites", text: "Min Requirement", src:"min_medium", default:"Min Medium"},
+  {putUnder: "requisites", text: "Min Requirement (small)", src:"min_small", default:"Min small"},
+  {putUnder: "requisites", text: "No Requirement", src:"normal", default:"No Req"},
+  {putUnder: "resources", text: "", src:"animal", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"card", otherbg:"res_otherbg", default:"Card (Vertical)"},
+  {putUnder: "resources", text: "", src:"data", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"fighter", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"floater", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"heat", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"microbe", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "res_otherbg", src:"other_player_background", hidden:true},
-  {putUnder: "resources", text: "", src:"plant", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"power", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"radiation", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"science", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"steel", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"titanium", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"TR", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"wild", otherbg:"res_otherbg"},
+  {putUnder: "resources", text: "", src:"plant", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"power", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"radiation", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"science", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"steel", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"titanium", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"TR", otherbg:"res_otherbg", default:"TR"},
+  {putUnder: "resources", text: "", src:"wild", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "tags", text: "", src:"animal", otherbg:"tag_otherbg"},
   {putUnder: "tags", text: "", src:"building", otherbg:"tag_otherbg"},
   {putUnder: "tags", text: "", src:"city", otherbg:"tag_otherbg"},
@@ -101,27 +101,27 @@ var blockList = [
   {putUnder: "tiles", text: "", src:"off-world_city", otherbg:"tiles_otherbg"},
   {putUnder: "tiles", text: "", src:"special", otherbg:"tiles_otherbg"},
   {putUnder: "tiles", text: "", src:"trade", otherbg:"trade_otherbg"},
-  {putUnder: "VPs", text: "VP 1/", src:"1_for"},
-  {putUnder: "VPs", text: "1 VP", src:"1"},
-  {putUnder: "VPs", text: "VP 2/", src:"2_for"},
-  {putUnder: "VPs", text: "2 VP", src:"2"},
-  {putUnder: "VPs", text: "3 VP", src:"3"},
-  {putUnder: "VPs", text: "4 VP", src:"4"},
-  {putUnder: "VPs", text: "5 VP", src:"5"},
-  {putUnder: "VPs", text: "VP background", src:"blank"},
-  {putUnder: "VPs", text: "-VP", src:"VPnegative"},
-  {putUnder: "VPs", text: "/ VP", src:"n_for"},
-  {putUnder: "misc", text: "", src:"party_leader"},
-  {putUnder: "templates", text: "", src:"prelude"},
-  {putUnder: "templates", text: "", src:"corporation"},
+  {putUnder: "VPs", text: "VP 1/", src:"1_for", default:"VP Standard"},
+  {putUnder: "VPs", text: "1 VP", src:"1", default:"VP Standard"},
+  {putUnder: "VPs", text: "VP 2/", src:"2_for", default:"VP Standard"},
+  {putUnder: "VPs", text: "2 VP", src:"2", default:"VP Standard"},
+  {putUnder: "VPs", text: "3 VP", src:"3", default:"VP Standard"},
+  {putUnder: "VPs", text: "4 VP", src:"4", default:"VP Standard"},
+  {putUnder: "VPs", text: "5 VP", src:"5", default:"VP Standard"},
+  {putUnder: "VPs", text: "VP background", src:"blank", default:"VP Standard"},
+  {putUnder: "VPs", text: "-VP", src:"VPnegative", default:"VP Negative"},
+  {putUnder: "VPs", text: "/ VP", src:"n_for", default:"VP Standard"},
+  {putUnder: "misc", text: "", src:"party_leader", default:"Delegate"},
+  {putUnder: "templates", text: "", src:"prelude", default:"Horizontal Card"},
+  {putUnder: "templates", text: "", src:"corporation", default:"Horizontal Card"},
   {putUnder: "misc", text: "Tag Holder", src:"corp_tag_holder"},
   {putUnder: "misc", text: "Effect (bg)", src:"effect"},
   {putUnder: "tags", text: "", src:"multitag", otherbg:"tag_otherbg"},
   {putUnder: "tiles", text: "tiles_otherbg", src:"other_player_background", hidden:true},
   {putUnder: "tags", text: "", src:"tourism", otherbg:"tag_otherbg"},
   {putUnder: "tags", text: "", src:"mercury", otherbg:"tag_otherbg"},
-  {putUnder: "resources", text: "", src:"asteroid", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"ore", otherbg:"res_otherbg"},
+  {putUnder: "resources", text: "", src:"asteroid", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"ore", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "misc", text: "", src:"asset"},
   {putUnder: "misc", text: "Colony Tile", src:"colonytile"},
   {putUnder: "misc", text: "", src:"population"},
@@ -132,14 +132,14 @@ var blockList = [
   {putUnder: "extensions", text: "Prelude", src:"ext_prelude"},
   {putUnder: "extensions", text: "ETSY", src:"ext_etsy"},
   {putUnder: "tiles", text: "trade_otherbg", src:"triangle_other_player_background", hidden:true},
-  {putUnder: "resources", text: "Prelude", src:"card_prelude", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "Corpo", src:"card_corpo", otherbg:"res_otherbg"},
+  {putUnder: "resources", text: "Prelude", src:"card_prelude", otherbg:"res_otherbg", default:"Card (Horizontal)"},
+  {putUnder: "resources", text: "Corpo", src:"card_corpo", otherbg:"res_otherbg", default:"Card (Horizontal)"},
   {putUnder: "tiles", text: "", src:"colony_plate"},
   {putUnder: "tiles", text: "Standard project", src:"Standard_tile"},
-  {putUnder: "resources", text: "", src:"bronze", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"silver", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"gold", otherbg:"res_otherbg"},
-  {putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg"}
+  {putUnder: "resources", text: "", src:"bronze", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"silver", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"gold", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg", default:"Standard"}
 ];
 
 var blockDefaults = {
@@ -186,8 +186,8 @@ var blockDefaults = {
 	{label:"TR", width:151, height:112}
   ],
   VPs: [
-    {label:"Standard", x:542, y:836, width:223, height:223},
-    {label:"Negative", x:652, y:836, width:223, height:223}
+    {label:"VP Standard", x:542, y:836, width:223, height:223},
+    {label:"VP Negative", x:652, y:836, width:223, height:223}
   ],
   tiles: [
     {label:"Standard tile", height:142},
@@ -1178,6 +1178,17 @@ function addBlock(th) {
   // layer.width = thisBlock.obj.width;
   // layer.height = thisBlock.obj.height;
   let newLayer = addLayer(thisBlock.text, layer);
+  
+	// ✅ Applique le preset par défaut si défini (ex: "TR")
+	if (thisBlock.default && blockDefaults[thisBlock.default]) {
+	  const def = blockDefaults[thisBlock.default];
+	  for (let key in def) {
+		if (key === "label") continue;
+		newLayer[key] = def[key];
+	  }
+	}
+  
+  
   if (thisBlock.obj) {
 
     if (!newLayer.width) newLayer.width = thisBlock.obj.width;
