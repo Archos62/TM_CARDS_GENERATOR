@@ -2650,6 +2650,34 @@ function showGroupContextMenu(x, y) {
     };
     container.appendChild(btn);
   });
+  
+	const distLabel = document.createElement("div");
+	distLabel.textContent = "Distribuer les éléments :";
+	distLabel.style.marginTop = "10px";
+	distLabel.style.marginBottom = "6px";
+	container.appendChild(distLabel);
+
+	const btnDistH = document.createElement("button");
+	btnDistH.textContent = "Distribuer horizontalement";
+	btnDistH.style.display = "block";
+	btnDistH.style.marginBottom = "4px";
+	btnDistH.onclick = () => {
+	  distributeHorizontally();
+	  drawProject();
+	  removePresetDropdown();
+	};
+	container.appendChild(btnDistH);
+
+	const btnDistV = document.createElement("button");
+	btnDistV.textContent = "Distribuer verticalement";
+	btnDistV.style.display = "block";
+	btnDistV.onclick = () => {
+	  distributeVertically();
+	  drawProject();
+	  removePresetDropdown();
+	};
+	container.appendChild(btnDistV);
+
 
   document.body.appendChild(container);
   setTimeout(() => {
@@ -2687,6 +2715,42 @@ function alignCenterY() {
 function alignBottom() {
   const yMax = Math.max(...selectedLayers.map(id => aLayers[id].y + aLayers[id].height));
   selectedLayers.forEach(id => aLayers[id].y = yMax - aLayers[id].height);
+}
+
+function distributeHorizontally() {
+  if (selectedLayers.length < 3) return;
+
+  const layers = selectedLayers.map(id => aLayers[id]);
+  layers.sort((a, b) => a.x - b.x);
+
+  const left = layers[0].x;
+  const right = Math.max(...layers.map(l => l.x + l.width));
+  const totalWidth = layers.reduce((acc, l) => acc + l.width, 0);
+  const space = (right - left - totalWidth) / (layers.length - 1);
+
+  let currentX = left;
+  for (let i = 0; i < layers.length; i++) {
+    layers[i].x = Math.round(currentX);
+    currentX += layers[i].width + space;
+  }
+}
+
+function distributeVertically() {
+  if (selectedLayers.length < 3) return;
+
+  const layers = selectedLayers.map(id => aLayers[id]);
+  layers.sort((a, b) => a.y - b.y);
+
+  const top = layers[0].y;
+  const bottom = Math.max(...layers.map(l => l.y + l.height));
+  const totalHeight = layers.reduce((acc, l) => acc + l.height, 0);
+  const space = (bottom - top - totalHeight) / (layers.length - 1);
+
+  let currentY = top;
+  for (let i = 0; i < layers.length; i++) {
+    layers[i].y = Math.round(currentY);
+    currentY += layers[i].height + space;
+  }
 }
 
 
