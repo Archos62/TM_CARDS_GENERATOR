@@ -1,5 +1,7 @@
 var aLayers = {};
 
+let selectedLayers = [];
+
 var userImageList = [];
 var otherBgList = {};
 var type2FuncList = {};
@@ -2290,7 +2292,13 @@ function onCanvasRightClick(event) {
   for (let i = layerDivs.length - 1; i >= 0; i--) {
     const layer = aLayers[layerDivs[i].id];
     if (clickIsWithinLayer(layer, mouse.x, mouse.y)) {
-      selectLayer.call(layerDivs[i].children[0]);
+      if (event.ctrlKey || event.metaKey) {
+		  toggleLayerSelection(layerDivs[i].id);
+		} else {
+		  clearLayerSelection();
+		  selectLayer.call(layerDivs[i].children[0]);
+		  selectedLayers = [layerDivs[i].id];
+		}
       showPresetDropdown(layer, event.clientX, event.clientY, layerDivs[i].id);
       return;
     }
@@ -2577,6 +2585,25 @@ function handleGlobalShortcuts(e) {
     drawProject();
   }
 }
+
+function toggleLayerSelection(id) {
+  const div = document.getElementById(id);
+  if (selectedLayers.includes(id)) {
+    selectedLayers = selectedLayers.filter(l => l !== id);
+    div.classList.remove("selected");
+  } else {
+    selectedLayers.push(id);
+    div.classList.add("selected");
+  }
+}
+
+function clearLayerSelection() {
+  selectedLayers.forEach(id => {
+    document.getElementById(id)?.classList.remove("selected");
+  });
+  selectedLayers = [];
+}
+
 
 document.addEventListener("keydown", handleGlobalShortcuts);
 document.addEventListener("keydown", handleEscapeClose);
