@@ -2365,6 +2365,36 @@ function showPresetDropdown(layer, x, y, layerId) {
 
   container.appendChild(dropdown);
 
+	// ✏️ Si c’est un texte OU un bloc avec champ texte (M€), afficher un champ de modification
+	if (
+	  (layer.type === "text") ||
+	  (layer.type === "block" && typeof layer.data === "string" && layer.params?.includes("alltext"))
+	) {
+	  const textInput = document.createElement("input");
+	  textInput.type = "text";
+	  textInput.value = layer.data || "";
+	  textInput.style.width = "100%";
+	  textInput.style.marginBottom = "6px";
+	  textInput.style.fontSize = "16px";
+
+	  textInput.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") {
+		  aLayers[layerId].data = textInput.value;
+		  drawProject();
+		  removePresetDropdown();
+		}
+	  });
+
+	  textInput.addEventListener("blur", () => {
+		aLayers[layerId].data = textInput.value;
+		drawProject();
+		removePresetDropdown();
+	  });
+
+	  container.appendChild(textInput);
+	}
+
+
   // 🔁 Bouton "Dupliquer"
   const btnClone = document.createElement("button");
   btnClone.textContent = "Dupliquer";
