@@ -474,7 +474,15 @@ function addBlockMenuItem(num) {
     if (!document.getElementById("image" + num)) {
       let toAdd = document.createElement("a");
       toAdd.onclick = addBlock;
-      toAdd.innerText = tmpText;
+	  //Ajout d'une image d'aperçu
+	  const icon = document.createElement("img");
+		icon.src = `${blockList[num].putUnder}/${blockList[num].src}.png`;
+		icon.style.height = "20px";
+		icon.style.verticalAlign = "middle";
+		icon.style.marginRight = "6px";
+
+	  toAdd.appendChild(icon);
+	  toAdd.appendChild(document.createTextNode(tmpText));
       toAdd.classList.add("w3-bar-item");
       toAdd.classList.add("w3-button");
       toAdd.href = "#";
