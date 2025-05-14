@@ -27,7 +27,7 @@ var blockList = [
   {putUnder: "templates", text: "Blue Very Big Top", src:"blue_very_big_top", default:"Vertical Card"},  
   {putUnder: "templates", text: "Red Card", src:"red_normal", default:"Vertical Card"},
   {putUnder: "templates", text: "Red Small Bottom", src:"red_small_bottom", default:"Vertical Card"},
-  {putUnder: "globalparameters", text: "", src:"oxygen", default:"Oxygene"}, //9
+  {putUnder: "globalparameters", text: "", src:"oxygen", default:"Oxygen"}, //9
   {putUnder: "globalparameters", text: "", src:"temperature", default:"Temp"}, //10
   {putUnder: "globalparameters", text: "", src:"venus", default:"Venus"},  //11
   {putUnder: "misc", text: "", src:"megacredit", otherbg:"mc_otherbg", default:"MC"}, //12
@@ -277,7 +277,8 @@ var megaTemplates = {
       {type:"text",data:"ID",x:413,y:562,width:826,height:29,color:"#24770d",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
 	  {type:"text",data:"X-ID",x:715,y:618,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"Card description",x:110,y:770,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   green_small_bottom: {
@@ -290,7 +291,8 @@ var megaTemplates = {
 	  {type:"text",data:"ID",x:413,y:664,width:826,height:29,color:"#24770d",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
 	  {type:"text",data:"X-ID",x:715,y:721,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
 	  {type:"text",data:"Card description",x:110,y:770,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   blue_normal: {
@@ -305,7 +307,8 @@ var megaTemplates = {
 	  {type:"text",data:"Card description",x:100,y:860,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
       {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:14,x:355,y:265,width:116,height:55,params:"allimages allpreset"},
-      {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   blue_big_bottom: {
@@ -320,7 +323,8 @@ var megaTemplates = {
 	  {type:"text",data:"Card description",x:100,y:860,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
       {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:14,x:355,y:265,width:116,height:55,params:"allimages allpreset"},
-      {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   blue_big_top: {
@@ -335,7 +339,8 @@ var megaTemplates = {
       {type:"text",data:"Card description",x:100,y:891,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
       {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:14,x:355,y:265,width:116,height:55,params:"allimages allpreset"},
-      {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   
@@ -350,7 +355,8 @@ var megaTemplates = {
       {type:"text",data:"X-ID",x:715,y:923,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
       {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:14,x:355,y:265,width:116,height:55,params:"allimages allpreset"},
-      {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Effect or Action text!",x:413,y:360,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   
@@ -359,12 +365,14 @@ var megaTemplates = {
       {type: "base", color: "#ffffff", height: 1126, width: 826, params: "color"},
       {type:"block", iNum:7,x:0,y:0,width:826,height:1126,params:"allimages"},
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
-      {type:"block", iNum:38,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
-      {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
+      {type:"block", iNum:38, x:179,y:97,width:22,height:59,params:"allimages allpreset"},
+      {type:"block", iNum:61, x:639, y:67, width:110, height:110,params:"allimages allpreset"},
+	  {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"ID",x:413,y:685,width:826,height:29,color:"#c36a17",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:715,y:713,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
       {type:"text",data:"Card description",x:100,y:810,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   red_small_bottom: {
@@ -373,11 +381,13 @@ var megaTemplates = {
       {type:"block", iNum:8,x:0,y:0,width:826,height:1126,params:"allimages"},
       {type:"text",data:"Cost",x:118,y:147,width:826,height:66,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"block", iNum:38,x:179,y:97,width:22,height:59,params:"allimages allpreset"},
-      {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
+      {type:"block", iNum:61, x:639, y:67, width:110, height:110,params:"allimages allpreset"},
+	  {type:"text",data:"CARD NAME",x:413,y:214,width:826,height:46,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"ID",x:413,y:718,width:826,height:29,color:"#c36a17",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"X-ID",x:715,y:746,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
       {type:"text",data:"Card description",x:100,y:810,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+      {type:"line",data:"ligne",x:213,y:1005,width:2,angle:0,length:1400,color:"#000000"},
+	  {type:"text",data:"Flavor text!",x:413,y:1035,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   prelude: {
@@ -389,7 +399,7 @@ var megaTemplates = {
       {type:"text",data:"X-ID",x:1002,y:520,width:826,height:21,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}, 
       {type:"text",data:"P R E L U D E",x:563,y:99,width:826,height:24,color:"#000000",font:"Prototype",style:"normal",weight:"normal",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"},
       {type:"text",data:"Card description",x:110,y:560,width:600,height:29,color:"#000000",font:"Pagella",style:"normal",weight:"normal",lineSpace:4,justify:"left",params:"allimages color alltext allpreset"},
-      {type:"text",data:"Flavor text!",x:563,y:723,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
+	  {type:"text",data:"Flavor text!",x:563,y:723,width:600,height:29,color:"#000000",font:"Pagella",style:"italic",weight:"bold",lineSpace:4,justify:"center",params:"allimages color alltext allpreset"}
     ]
   },
   corporation: {
