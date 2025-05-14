@@ -2551,6 +2551,7 @@ function openReplacementMenu(oldLayer, layerId, container) {
   container.appendChild(select);
 
   // ✅ Remplacement immédiat à la sélection
+  select.value = oldLayer.iNum;
   select.addEventListener("change", () => {
     const newINum = parseInt(select.value);
     if (isNaN(newINum)) return;
