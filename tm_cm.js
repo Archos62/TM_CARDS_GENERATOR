@@ -56,7 +56,7 @@ var blockList = [
   {putUnder: "requisites", text: "Max Requirement", src:"max_big", default:"Max"},
   {putUnder: "requisites", text: "Min Requirement (big)", src:"min_big", default:"Min Large"},
   {putUnder: "requisites", text: "Min Requirement", src:"min_medium", default:"Min Medium"},
-  {putUnder: "requisites", text: "Min Requirement (small)", src:"min_small", default:"Min small"},
+  {putUnder: "requisites", text: "Min Requirement (small)", src:"min_small", default:"Min Small"},
   {putUnder: "requisites", text: "No Requirement", src:"normal", default:"No Req"},
   {putUnder: "resources", text: "", src:"animal", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "", src:"card", otherbg:"res_otherbg", default:"Card (Vertical)"},
@@ -141,7 +141,8 @@ var blockList = [
   {putUnder: "resources", text: "", src:"bronze", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "", src:"silver", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "", src:"gold", otherbg:"res_otherbg", default:"Standard"},
-  {putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg", default:"Standard"}
+  {putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg", default:"Standard"},
+  {putUnder: "resources", text: "", src:"desease", otherbg:"res_otherbg", default:"Standard"}
 ];
 
 var blockDefaults = {
