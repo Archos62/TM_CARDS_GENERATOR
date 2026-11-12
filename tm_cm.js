@@ -142,7 +142,7 @@ var blockList = [
   {putUnder: "resources", text: "", src:"silver", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "", src:"gold", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "resources", text: "", src:"blank", otherbg:"res_otherbg", default:"Standard"},
-  {putUnder: "resources", text: "", src:"desease", otherbg:"res_otherbg", default:"Standard"}
+  {putUnder: "resources", text: "", src:"desease", otherbg:"res_otherbg", default:"Standard"},
   {putUnder: "extensions", text: "Corporate Betterments", src: "ext_corporate_betterments"}
 ];
 
